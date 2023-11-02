@@ -47,7 +47,7 @@ const sendMailHandler = async (client: string, content: MailObj) => {
           transport.close();
           resolve(result.response);
         }
-      }
+      },
     );
   });
 };

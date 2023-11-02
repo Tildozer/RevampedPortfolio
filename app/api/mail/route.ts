@@ -1,26 +1,30 @@
-import axios, { AxiosHeaders } from "axios";
+import { type NextRequest } from "next/server";
+import sendMail from "../../../server/db/mail";
 
+interface MailObj {
+  email: string;
+  name: string;
+  htmlStr: string;
+}
 
-export async function emailFetch(email: string, name: string) {
-  const emailSent: AxiosHeaders = await axios.post(
-    "/api/mail/",
-    JSON.stringify({
-      email,
-      name,
-      htmlStr: `
-        <h2>I hope your day is going well!</h2>
-        <p>
-          I am a charasmatic and enthusiastic Software Engineer who is ready to show you what I can do for you! I work hard everyday to keep learning new skills and reaching my full potential. for any buisness inquries please reach out to me via email. 
-        </p>
-        <img src="https://media.tenor.com/pUJHssYR_JsAAAAC/welcome.gif" alt="Pikachu waving">
-        <h3>Thank you for taking the time to look at my portfoli!</h3>
-        <div class="links">
-          <a href="mailto:actninswitch@gmail.com">actninswitch@gmail.com</a>
-          &nbsp;||&nbsp;
-          <a href="https://www.linkedin.com/in/anthony-thibodeaux">Linkden profile</a>
-          &nbsp;||&nbsp;
-          <a href="https://github.com/Tildozer">github account</a>
-        </div>`,
-    })
-  );
+export async function POST(request: NextRequest) {
+  try {
+    const content: MailObj = await request.json();
+    const regex: RegExp = new RegExp(
+      "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$",
+    );
+    // This is used to make sure the username is an email
+    if (!regex.test(content.email)) {
+      return new Response("Plese enter a valid email", {
+        status: 400,
+      });
+    }
+    await sendMail("Anthony's resume", content);
+
+    return new Response(JSON.stringify({ message: "Email sent" }));
+  } catch (error: any) {
+    return new Response(error, {
+      status: 500,
+    });
+  }
 }

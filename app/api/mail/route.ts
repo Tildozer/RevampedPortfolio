@@ -1,5 +1,5 @@
 import { type NextRequest } from "next/server";
-import sendMail from "../../../server/db/mail";
+import sendMail from "./mail";
 
 interface MailObj {
   email: string;

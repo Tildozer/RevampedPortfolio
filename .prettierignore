@@ -16,6 +16,7 @@ package.json
 next-end.d.ts
 nextconfig.js
 next-env.d.ts
+next.config.js
 
 # production
 /build
@@ -26,6 +27,8 @@ next-env.d.ts
 README.md
 tailwind.config.ts
 postcss.config.js
+.eslintrc.json
+.prettierrc
 
 # debug
 npm-debug.log*

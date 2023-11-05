@@ -18,9 +18,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} bg-slate-50 dark:bg-slate-900`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+    <html suppressHydrationWarning lang="en">
+      <body
+        className={`${inter.className} bg-slate-50 dark:bg-slate-900 dark:text-slate-400`}
+      >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem={true}
+        >
           <DarkModeButton />
           <main>{children}</main>
         </ThemeProvider>

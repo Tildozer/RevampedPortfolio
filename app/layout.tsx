@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning lang="en">
       <body
-        className={`${inter.className} bg-slate-50 dark:bg-slate-900 dark:text-slate-400`}
+        className={`${inter.className} transition-bg bg-slate-50 dark:bg-slate-900 dark:text-slate-400`}
       >
         <ThemeProvider
           attribute="class"

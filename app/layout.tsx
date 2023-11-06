@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
+import { DarkModeSlider } from "@/components";
 import { ThemeProvider } from "./ThemeProvider";
-import { DarkModeButton } from "@/components";
 // import { switchThemeDuration } from "./constants";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -27,7 +27,7 @@ export default function RootLayout({
           defaultTheme="system"
           enableSystem={true}
         >
-          <DarkModeButton />
+          <DarkModeSlider />
           <main>{children}</main>
         </ThemeProvider>
       </body>

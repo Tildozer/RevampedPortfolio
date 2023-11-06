@@ -1,1 +1,1 @@
-export { DarkModeButton } from "./DarkModeButton";
+export { DarkModeSlider } from "./DarkModeSlider";

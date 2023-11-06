@@ -1,1 +1,1 @@
-export { DarkModeButton } from "./theme";
+export { DarkModeSlider } from "./theme";

@@ -14,6 +14,7 @@ export const DarkModeSlider = (props: Props) => {
     buttonColor: string;
     textColor: string;
     duration: number;
+    sliderPosition: string;
   };
 
   const darkModeTransition = (
@@ -30,10 +31,12 @@ export const DarkModeSlider = (props: Props) => {
         background: settings.buttonColor,
       })
       .duration(settings.duration * 2);
+    gsap.to(".transition-text", {
+      color: settings.textColor,
+    });
+    gsap.fromTo(".transition-slider", { rotateZ: 0 }, { rotateZ: 360 });
     gsap
-      .to(".transition-text", {
-        color: settings.textColor,
-      })
+      .to(".transition-slider", { left: settings.sliderPosition })
       .duration(settings.duration);
 
     setTimeout(() => {
@@ -46,25 +49,21 @@ export const DarkModeSlider = (props: Props) => {
     buttonColor: "rgb(30 41 59 / var(--tw-bg-opacity)",
     textColor: "rgb(15 23 42 / var(--tw-text-opacity)",
     duration: 0.2,
-  }
+    sliderPosition: "0.75rem",
+  };
   const darkModeSettings = {
     backgroundColor: "rgb(15 23 42 / var(--tw-bg-opacity)",
     buttonColor: "rgb(148 163 184 / var(--tw-bg-opacity)",
     textColor: "rgb(234 179 8 / var(--tw-text-opacity)",
     duration: 0.2,
-  }
+    sliderPosition: "1.75rem",
+  };
 
   const darkModeClick = () => {
     if (theme === "dark") {
-      darkModeTransition(
-        lightModeSettings,
-        "light",
-      );
+      darkModeTransition(lightModeSettings, "light");
     } else {
-      darkModeTransition(
-        darkModeSettings,
-        "dark",
-      );
+      darkModeTransition(darkModeSettings, "dark");
     }
   };
 
@@ -82,7 +81,7 @@ export const DarkModeSlider = (props: Props) => {
   if (!mounted) return null;
 
   return (
-    <div className="transition-text flex flex-col text-xs dark:text-yellow-500 text-slate-900">
+    <div className="transition-text flex flex-col text-[.45rem] dark:text-yellow-500 text-slate-900">
       <span className="ml-2">{theme === "dark" ? "Dark" : "Light"} mode</span>
       <label
         className="transition-button w-12 h-2 rounded-md m-2 bg-slate-800 dark:bg-slate-400"
@@ -92,7 +91,7 @@ export const DarkModeSlider = (props: Props) => {
           className="transition-text absolute top-4 left-3 opacity-0 w-12 h-4 hover:cursor-pointer"
           type="checkBox"
         />
-        <div className="transition-slider flex items-center justify-center bg-red-200 dark:bg-blue-900 w-6 h-6 rounded-full absolute top-4 left-3 hover:cursor-pointer">
+        <div className="transition-slider text-lg flex items-center justify-center bg-red-200 dark:bg-blue-900 w-6 h-6 rounded-full absolute top-3 left-3 dark:left-7 hover:cursor-pointer">
           {theme === "dark" ? <PiMoonBold /> : <PiSunBold />}
         </div>
       </label>

@@ -4,28 +4,30 @@ type Props = {
   children: ReactNode;
 };
 
-declare global {
-  interface Window {
-    darkMode: boolean | undefined;
-  }
-}
-
 const ThemeSlider = ({ children }: Props) => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState<boolean>(false);
 
+  //   console.log("darkMode", darkMode)
   const toggleTheme = () => {
     setDarkMode(!darkMode);
-    window.darkMode = darkMode;
   };
 
   useEffect(() => {
-    if (!window.darkMode) {
-      if (window.darkMode === null && window.matchMedia("(prefers-color-scheme: dark)")) {
-        setDarkMode(true);
-      }
-      window.darkMode = darkMode;
+    // Update local storage when darkMode changes
+    window.localStorage.setItem("darkMode", darkMode ? "dark" : "light");
+  }, [darkMode]);
+
+  useEffect(() => {
+    const storedMode = window.localStorage.getItem("darkMode");
+    if (storedMode === null) {
+      window.localStorage.setItem(
+        "darkMode",
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light",
+      );
     } else {
-      setDarkMode(window.darkMode);
+      setDarkMode(storedMode === "dark");
     }
   }, []);
 

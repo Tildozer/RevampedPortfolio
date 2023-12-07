@@ -6,16 +6,16 @@ import { ThemeSlider } from "./components";
 
 const root = ReactDOM.createRoot(document.getElementById("root") as Element);
 
-
 const router = createBrowserRouter([
   {
     path: "/",
-    element: 
+    element: (
       <ThemeSlider>
         <Main />
-      </ThemeSlider>,
+      </ThemeSlider>
+    ),
   },
-], );
+]);
 
 root.render(
   <React.StrictMode>

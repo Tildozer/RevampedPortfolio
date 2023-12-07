@@ -1,1 +1,1 @@
-export {default as ThemeSlider} from "./ThemeSlider"
+export { default as ThemeSlider } from "./ThemeSlider";

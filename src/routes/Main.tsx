@@ -1,11 +1,14 @@
 import React from "react";
-import { Experince, Floor } from "../components";
 import { Canvas } from "@react-three/fiber";
 import "./index.css";
+import { ThemeSlider } from "../components";
 
-type Props = {};
+type Props = {
+};
 
-const Main = (props: Props) => {
+const Main = ({ } : Props) => {
+
+
   return (
     <div className="h-screen w-screen">
     </div>

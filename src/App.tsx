@@ -11,7 +11,7 @@ const router = createBrowserRouter([
     path: "/",
     element: (
       <ThemeSlider>
-        <Main />
+        <Main childsBackground={null} />
       </ThemeSlider>
     ),
   },

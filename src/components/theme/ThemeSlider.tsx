@@ -1,13 +1,28 @@
-import React, { ReactNode, useEffect, useState } from "react";
+import React, {
+  useEffect,
+  useState,
+  ReactElement,
+  JSXElementConstructor,
+  useRef,
+  LegacyRef,
+} from "react";
 
 type Props = {
-  children: ReactNode;
+  children: ReactElement<any, string | JSXElementConstructor<any>>;
 };
 
 const ThemeSlider = ({ children }: Props) => {
   const [darkMode, setDarkMode] = useState<boolean>(false);
 
   //   console.log("darkMode", darkMode)
+
+  if (React.Children.count(children) !== 1) {
+    throw new Error("ParentComponent expects exactly one child.");
+  }
+
+  const childsBackground = useRef<LegacyRef<HTMLDivElement>>(null!);
+  const childWithProps = React.cloneElement(children, { childsBackground });
+
   const toggleTheme = () => {
     setDarkMode(!darkMode);
   };
@@ -36,7 +51,7 @@ const ThemeSlider = ({ children }: Props) => {
       <div onClick={toggleTheme} className="select-none">
         {darkMode ? "darkMode" : "lightMode"}
       </div>
-      {children}
+      {childWithProps}
     </div>
   );
 };

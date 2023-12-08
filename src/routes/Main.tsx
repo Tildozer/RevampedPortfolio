@@ -1,16 +1,24 @@
 import React, { LegacyRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import "./index.css";
-import { ThemeSlider } from "../components";
+import { useDarkMode } from "../DarkModeProvider";
 
-type Props = {
-  childsBackground: LegacyRef<HTMLDivElement> | null;
-};
+type Props = {};
 
-const Main = ({ childsBackground }: Props) => {
-  console.log(childsBackground);
+const Main = ({}: Props) => {
+  const { toggleDarkMode, darkMode } = useDarkMode();
 
-  return <div ref={childsBackground} className="h-screen w-screen"></div>;
+  console.log(darkMode);
+
+  return (
+    <div
+      className={
+        "bg-color h-screen w-screen bg-white dark:bg-black dark:text-white"
+      }
+    >
+      <button onClick={toggleDarkMode}>Test</button>
+    </div>
+  );
 };
 
 export default Main;

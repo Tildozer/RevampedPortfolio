@@ -1,3 +1,5 @@
+import React, { LegacyRef, MutableRefObject } from "react";
+
 export type ThemeSettings = {
   backgroundColor: string;
   buttonColor: string;

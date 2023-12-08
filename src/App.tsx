@@ -2,23 +2,21 @@ import React from "react";
 import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Main } from "./routes";
-import { ThemeSlider } from "./components";
+import { DarkModeProvider } from "./DarkModeProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root") as Element);
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <ThemeSlider>
-        <Main childsBackground={null} />
-      </ThemeSlider>
-    ),
+    element: <Main />,
   },
 ]);
 
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <DarkModeProvider>
+      <RouterProvider router={router} />
+    </DarkModeProvider>
   </React.StrictMode>,
 );

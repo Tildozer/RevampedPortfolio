@@ -1,1 +1,0 @@
-export { ThemeSlider } from "./theme";

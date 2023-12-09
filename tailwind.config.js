@@ -4,6 +4,9 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        'Bebas' : ['Bebas Neue', 'verdana']
+      }
     },
   },
   plugins: [],

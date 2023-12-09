@@ -1,22 +1,18 @@
-import React, { LegacyRef } from "react";
-import { Canvas } from "@react-three/fiber";
+import React from "react";
 import "./index.css";
-import { useDarkMode } from "../DarkModeProvider";
+
+import { Header } from "../components";
 
 type Props = {};
 
 const Main = ({}: Props) => {
-  const { toggleDarkMode, darkMode } = useDarkMode();
-
-  console.log(darkMode);
-
   return (
     <div
       className={
         "bg-color h-screen w-screen bg-white dark:bg-black dark:text-white"
       }
     >
-      <button onClick={toggleDarkMode}>Test</button>
+      <Header />
     </div>
   );
 };

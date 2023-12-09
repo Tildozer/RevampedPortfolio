@@ -9,13 +9,13 @@ import React, {
   FC,
 } from "react";
 
-import { themeTransition } from "./theme";
+import { themeTransition, Slider, Background } from "./theme";
 
 interface DarkModeContextProps {
   darkMode: boolean;
   toggleDarkMode: () => void;
-  slider: React.LegacyRef<HTMLDivElement>;
-  // themeTransition: () => void;
+  slider: Slider;
+  background: Background;
 }
 
 const DarkModeContext = createContext<DarkModeContextProps | undefined>(
@@ -24,9 +24,11 @@ const DarkModeContext = createContext<DarkModeContextProps | undefined>(
 
 export const DarkModeProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [darkMode, setDarkMode] = useState(false);
-  const slider = useRef<HTMLDivElement>(null!);
+  const [isPressed, setIsPressed] = useState(false);
 
-  console.log(slider)
+  const slider: Slider = useRef(null!);
+  const background: Background = useRef(null!);
+
   const toggleLocalStorage = () => {
     localStorage.theme === "dark"
       ? (localStorage.theme = "light")
@@ -34,6 +36,7 @@ export const DarkModeProvider: FC<{ children: ReactNode }> = ({ children }) => {
   };
 
   const toggleDarkMode = () => {
+    setIsPressed(true);
     setDarkMode((prevMode) => !prevMode);
     toggleLocalStorage();
   };
@@ -52,13 +55,19 @@ export const DarkModeProvider: FC<{ children: ReactNode }> = ({ children }) => {
   };
 
   useEffect(() => {
-    themeTransition();
-    darkModeCheck();
-    // setTimeout(darkModeCheck, 500);
+    if (isPressed) {
+      themeTransition({ slider, background });
+      setTimeout(darkModeCheck, 100);
+      setIsPressed(false);
+    } else {
+      darkModeCheck();
+    }
   }, [darkMode]);
 
   return (
-    <DarkModeContext.Provider value={{ darkMode, toggleDarkMode, slider }}>
+    <DarkModeContext.Provider
+      value={{ darkMode, toggleDarkMode, slider, background }}
+    >
       {children}
     </DarkModeContext.Provider>
   );

@@ -2,9 +2,9 @@ import React from "react";
 import { useDarkMode } from "../DarkModeProvider";
 import { Header } from "../components";
 
-type Props = {};
+interface Props {}
 
-const Main = ({}: Props) => {
+const Projects = (props: Props) => {
   const { background } = useDarkMode();
   return (
     <div
@@ -18,4 +18,4 @@ const Main = ({}: Props) => {
   );
 };
 
-export default Main;
+export default Projects;

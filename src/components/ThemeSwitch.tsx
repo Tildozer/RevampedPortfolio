@@ -27,7 +27,9 @@ const ThemeSwitch = ({ darkMode, toggleDarkMode, slider }: Props) => {
           {darkMode ? <PiMoonBold /> : <PiSunBold />}
         </div>
       </label>
-      <span className="ml-2 mt-1">{darkMode ? "Dark" : "Light"} mode</span>
+      <span className="ml-2 mt-1 text-[.65rem]">
+        {darkMode ? "Dark" : "Light"} mode
+      </span>
     </div>
   );
 };

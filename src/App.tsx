@@ -4,6 +4,7 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Main, Projects } from "./routes";
 import { DarkModeProvider } from "./DarkModeProvider";
+import ContactInfo from "./routes/ContactInfo";
 
 const root = ReactDOM.createRoot(document.getElementById("root") as Element);
 
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
   {
     path: "/projects",
     element: <Projects />,
+  },
+  {
+    path: "/contact",
+    element: <ContactInfo />,
   },
 ]);
 

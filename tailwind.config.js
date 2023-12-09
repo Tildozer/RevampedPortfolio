@@ -5,7 +5,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'Bebas' : ['Bebas Neue', 'verdana']
+        'Bebas' : ['Bebas Neue', 'verdana'],
+        'Playfair': ['Playfair Display', 'serif'],
       }
     },
   },

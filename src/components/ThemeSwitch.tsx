@@ -4,7 +4,7 @@ import { PiSunBold, PiMoonBold } from "react-icons/pi";
 type Props = {
   darkMode: boolean;
   toggleDarkMode: () => void;
-  slider: React.LegacyRef<HTMLDivElement>;
+  slider: React.MutableRefObject<HTMLDivElement>;
 };
 
 const ThemeSwitch = ({ darkMode, toggleDarkMode, slider }: Props) => {

@@ -21,13 +21,13 @@ const ThemeSwitch = ({ darkMode, toggleDarkMode, slider }: Props) => {
         />
         <div
           ref={slider}
-          className="text-lg flex items-center justify-center bg-red-200 dark:bg-blue-900 w-6 h-6 rounded-full absolute top-1 left-3 dark:left-7 hover:cursor-pointer"
+          className="text-lg flex items-center justify-center bg-orange-200 dark:bg-blue-900 w-6 h-6 rounded-full absolute top-1 left-3 dark:left-7 hover:cursor-pointer"
           onClick={toggleDarkMode}
         >
           {darkMode ? <PiMoonBold /> : <PiSunBold />}
         </div>
       </label>
-      <span className="ml-2 mt-1 text-[.65rem]">
+      <span className="ml-2 mt-1 text-[.65rem] select-none">
         {darkMode ? "Dark" : "Light"} mode
       </span>
     </div>

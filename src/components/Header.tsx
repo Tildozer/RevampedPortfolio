@@ -16,7 +16,7 @@ const Header = (props: Props) => {
         />
         <Nav />
         <div className="font-Bebas pt-2 self-end sm:mr-2 order-[0] sm:order-2">
-          <span className="text-3xl">Anthony Thibodeaux</span>
+          <span className="text-3xl select-none">Anthony Thibodeaux</span>
         </div>
       </div>
     </>

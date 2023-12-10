@@ -12,9 +12,7 @@ const Main = ({}: Props) => {
       className="bg-color min-h-screen w-screen bg-slate-50 dark:bg-slate-900 dark:text-slate-400"
     >
       <Header />
-      <div>
-        
-      </div>
+      <div></div>
       <Footer />
     </div>
   );

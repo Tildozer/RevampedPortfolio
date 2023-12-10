@@ -13,9 +13,7 @@ const Projects = (props: Props) => {
     >
       <Header />
       <ProjectLinks />
-      <div>
-        
-      </div>
+      <div></div>
       <Footer />
     </div>
   );

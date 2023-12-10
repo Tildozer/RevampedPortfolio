@@ -3,6 +3,7 @@ import {
   darkModeSettings,
   ThemeSettings,
   ThemeTransitionItems,
+  Logo
 } from ".";
 import { gsap } from "gsap";
 
@@ -18,7 +19,7 @@ const transitionDuration = 0.2;
 
 const transition = (
   settings: ThemeSettings,
-  { slider, background }: ThemeTransitionItems,
+  { slider, background, githubLogo }: ThemeTransitionItems,
 ) => {
   gsap
     .to(slider.current, { left: settings.sliderPosition })
@@ -29,4 +30,5 @@ const transition = (
     .duration(transitionDuration);
 
   gsap.fromTo(slider.current, { rotateZ: 0 }, { rotateZ: 360 });
+  // gsap.to(them)
 };

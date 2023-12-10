@@ -15,7 +15,7 @@ const Header = (props: Props) => {
           slider={slider}
         />
         <Nav />
-        <div className="font-Bebas pt-2 self-end sm:mr-2">
+        <div className="font-Bebas pt-2 self-end sm:mr-2 order-[0] sm:order-2">
           <span className="text-3xl">Anthony Thibodeaux</span>
         </div>
       </div>

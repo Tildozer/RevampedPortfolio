@@ -7,7 +7,7 @@ const Nav = (props: Props) => {
   const pathname = useLocation().pathname;
 
   return (
-    <nav className="flex justify-around flex-col sm:flex-row sm:gap-4">
+    <nav className="flex justify-around flex-col sm:flex-row order-2 sm:-order-none sm:gap-4">
       <Link
         className={`${
           pathname === "/" ? "underline" : ""

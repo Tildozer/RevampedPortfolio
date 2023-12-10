@@ -15,8 +15,7 @@ const Nav = (props: Props) => {
   const pathname = useLocation().pathname;
 
   const MakeLinks = (settings: LinkSettings[]): ReactNode[] => {
-    return settings.map(({id, name, path, width}) => {
-
+    return settings.map(({ id, name, path, width }) => {
       return (
         <Underline
           width={width}
@@ -40,30 +39,26 @@ const Nav = (props: Props) => {
 
   return (
     <nav className="flex justify-around flex-col sm:flex-row order-2 sm:-order-none sm:gap-4 select-none">
-      {MakeLinks(
-        [
-          {
-            id: 1,
-            path:"/", 
-            name: "Home",
-            width: "2.60rem",
-            
-          },
-          {
-            id: 2,
-            path: "/projects", 
-            name: "Projects", 
-            width: "3.60rem", 
-            
-          }, 
-          {
-            id: 3,
-            path: "/contact",
-            name: "Contact me",
-            width: "5rem",
-
-          }]
-      )}
+      {MakeLinks([
+        {
+          id: 1,
+          path: "/",
+          name: "Home",
+          width: "2.60rem",
+        },
+        {
+          id: 2,
+          path: "/projects",
+          name: "Projects",
+          width: "3.60rem",
+        },
+        {
+          id: 3,
+          path: "/contact",
+          name: "Contact me",
+          width: "5rem",
+        },
+      ])}
     </nav>
   );
 };

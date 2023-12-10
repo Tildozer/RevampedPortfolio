@@ -1,23 +1,24 @@
-import { MutableRefObject} from "react";
-import {IconType} from "react-icons"
+import { MutableRefObject } from "react";
+import { IconType } from "react-icons";
+import {} from "react-router-dom";
 
 export interface ThemeSettings {
   backgroundColor: string;
   buttonColor: string;
   textColor: string;
   sliderPosition: string;
-  githubLogoColor: string;
   githubBackgroundColor: string;
 }
 
 export type Slider = MutableRefObject<HTMLDivElement>;
 export type Background = MutableRefObject<HTMLDivElement>;
-export type Logo = MutableRefObject<IconType>;
+export type Link = React.RefObject<HTMLAnchorElement>;
+// export type Logo = MutableRefObject<HTMLDivElement>;
 
 export interface ThemeTransitionItems {
   slider: Slider;
   background: Background;
-  githubLogo: Logo
+  githubContainer: Link;
 }
 
 export const lightModeSettings: ThemeSettings = {
@@ -25,8 +26,7 @@ export const lightModeSettings: ThemeSettings = {
   buttonColor: "rgb(30 41 59 / var(--tw-bg-opacity)",
   textColor: "rgb(15 23 42 / var(--tw-text-opacity)",
   sliderPosition: "0.75rem",
-  githubLogoColor: "",
-  githubBackgroundColor: "" 
+  githubBackgroundColor: "rgb(0 0 0 / var(--tw-bg-opacity))",
 };
 
 export const darkModeSettings: ThemeSettings = {
@@ -34,6 +34,5 @@ export const darkModeSettings: ThemeSettings = {
   buttonColor: "rgb(148 163 184 / var(--tw-bg-opacity)",
   textColor: "rgb(234 179 8 / var(--tw-text-opacity)",
   sliderPosition: "1.75rem",
-  githubLogoColor: "",
-  githubBackgroundColor: "" 
+  githubBackgroundColor: "rgb(71 85 105 / var(--tw-bg-opacity))",
 };

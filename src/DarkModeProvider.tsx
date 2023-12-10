@@ -9,14 +9,14 @@ import React, {
   FC,
 } from "react";
 
-import { themeTransition, Slider, Background, Logo } from "./theme";
+import { themeTransition, Slider, Background, Link } from "./theme";
 
 interface DarkModeContextProps {
   darkMode: boolean;
   toggleDarkMode: () => void;
   slider: Slider;
   background: Background;
-  githubLogo: Logo
+  githubContainer: Link;
 }
 
 const DarkModeContext = createContext<DarkModeContextProps | undefined>(
@@ -29,7 +29,7 @@ export const DarkModeProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
   const slider: Slider = useRef(null!);
   const background: Background = useRef(null!);
-  const githubLogo: Logo = useRef(null!);
+  const githubContainer: Link = useRef(null!);
 
   const toggleLocalStorage = () => {
     localStorage.theme === "dark"
@@ -58,7 +58,7 @@ export const DarkModeProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
   useEffect(() => {
     if (isPressed) {
-      themeTransition({ slider, background, githubLogo});
+      themeTransition({ slider, background, githubContainer });
       setTimeout(darkModeCheck, 100);
       setIsPressed(false);
     } else {
@@ -68,7 +68,7 @@ export const DarkModeProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
   return (
     <DarkModeContext.Provider
-      value={{ darkMode, toggleDarkMode, slider, background, githubLogo}}
+      value={{ darkMode, toggleDarkMode, slider, background, githubContainer }}
     >
       {children}
     </DarkModeContext.Provider>

@@ -24,8 +24,12 @@ const Underline = ({ link, width }: Props) => {
         containerElement.removeEventListener("mouseover", mouseOverHandler);
       };
       const mouseLeaveEvent = () => {
-        gsap.to(underlineElement, { width: 0, opacity: 0, duration: 0.3})
-        setTimeout(() => containerElement.addEventListener("mouseover", mouseOverHandler), 750);
+        gsap.to(underlineElement, { width: 0, opacity: 0, duration: 0.3 });
+        setTimeout(
+          () =>
+            containerElement.addEventListener("mouseover", mouseOverHandler),
+          750,
+        );
       };
       containerElement.addEventListener("mouseover", mouseOverHandler);
       containerElement.addEventListener("mouseleave", mouseLeaveEvent);
@@ -34,7 +38,10 @@ const Underline = ({ link, width }: Props) => {
   return (
     <div ref={container}>
       {link}
-      <div ref={underline} className="bg-slate-800 dark:bg-slate-400 h-1 rounded-md w-0"></div>
+      <div
+        ref={underline}
+        className="bg-slate-800 dark:bg-slate-400 h-1 rounded-md w-0"
+      ></div>
     </div>
   );
 };

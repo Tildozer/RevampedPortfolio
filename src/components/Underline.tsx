@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useRef } from "react";
+import React, { ReactNode, useEffect, useRef, MutableRefObject } from "react";
 import { gsap } from "gsap";
 
 interface Props {
@@ -7,10 +7,10 @@ interface Props {
 }
 
 const Underline = ({ link, width }: Props) => {
-  const container: React.MutableRefObject<HTMLDivElement> = useRef(null!);
-  const underline: React.MutableRefObject<HTMLDivElement> = useRef(null!);
+  const container: MutableRefObject<HTMLDivElement> = useRef(null!);
+  const underline: MutableRefObject<HTMLDivElement> = useRef(null!);
 
-  useEffect(() => {
+  const setEventListeners = () => {
     const containerElement = container.current;
     const underlineElement = underline.current;
 
@@ -22,21 +22,26 @@ const Underline = ({ link, width }: Props) => {
           { width: width, opacity: 1, duration: 0.5 },
         );
         containerElement.removeEventListener("mouseover", mouseOverHandler);
+        containerElement.addEventListener("mouseleave", mouseLeaveEvent);
       };
       const mouseLeaveEvent = () => {
-        gsap.to(underlineElement, { width: 0, opacity: 0, duration: 0.3 });
+        gsap.to(underlineElement, { width: 0, opacity: 0 });
         setTimeout(
           () =>
             containerElement.addEventListener("mouseover", mouseOverHandler),
-          750,
+          300,
         );
       };
       containerElement.addEventListener("mouseover", mouseOverHandler);
-      containerElement.addEventListener("mouseleave", mouseLeaveEvent);
     }
+  };
+
+  useEffect(() => {
+    setTimeout(setEventListeners, 500);
   }, []);
+
   return (
-    <div ref={container}>
+    <div className="pl-4 sm:pl-0" ref={container}>
       {link}
       <div
         ref={underline}

@@ -19,7 +19,12 @@ const transitionDuration = 0.2;
 
 const transition = (
   settings: ThemeSettings,
-  { slider, background, githubContainer }: ThemeTransitionItems,
+  {
+    slider,
+    background,
+    githubContainer,
+    linkedinContainer,
+  }: ThemeTransitionItems,
 ) => {
   gsap
     .to(slider.current, { left: settings.sliderPosition })
@@ -31,6 +36,10 @@ const transition = (
 
   gsap.fromTo(slider.current, { rotateZ: 0 }, { rotateZ: 360 });
   gsap.to(githubContainer.current, {
+    color: settings.githubBackgroundColor,
+    duration: transitionDuration,
+  });
+  gsap.to(linkedinContainer.current, {
     color: settings.githubBackgroundColor,
     duration: transitionDuration,
   });

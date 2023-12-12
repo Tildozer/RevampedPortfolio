@@ -12,13 +12,14 @@ export interface ThemeSettings {
 
 export type Slider = MutableRefObject<HTMLDivElement>;
 export type Background = MutableRefObject<HTMLDivElement>;
-export type Link = React.RefObject<HTMLAnchorElement>;
+export type Links = React.RefObject<HTMLAnchorElement>;
 // export type Logo = MutableRefObject<HTMLDivElement>;
 
 export interface ThemeTransitionItems {
   slider: Slider;
   background: Background;
-  githubContainer: Link;
+  githubContainer: Links;
+  linkedinContainer: Links;
 }
 
 export const lightModeSettings: ThemeSettings = {

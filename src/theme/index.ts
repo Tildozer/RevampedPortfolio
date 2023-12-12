@@ -4,7 +4,7 @@ export type {
   ThemeSettings,
   ThemeTransitionItems,
   // Logo
-  Link,
+  Links,
 } from "./themeSetting";
 export { darkModeSettings, lightModeSettings } from "./themeSetting";
 export { themeTransition } from "./themeTransition";

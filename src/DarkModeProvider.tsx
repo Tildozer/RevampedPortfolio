@@ -9,14 +9,15 @@ import React, {
   FC,
 } from "react";
 
-import { themeTransition, Slider, Background, Link } from "./theme";
+import { themeTransition, Slider, Background, Links } from "./theme";
 
 interface DarkModeContextProps {
   darkMode: boolean;
   toggleDarkMode: () => void;
   slider: Slider;
   background: Background;
-  githubContainer: Link;
+  githubContainer: Links;
+  linkedinContainer: Links;
 }
 
 const DarkModeContext = createContext<DarkModeContextProps | undefined>(
@@ -29,12 +30,11 @@ export const DarkModeProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
   const slider: Slider = useRef(null!);
   const background: Background = useRef(null!);
-  const githubContainer: Link = useRef(null!);
+  const githubContainer: Links = useRef(null!);
+  const linkedinContainer: Links = useRef(null!);
 
   const toggleLocalStorage = () => {
-    localStorage.theme === "dark"
-      ? (localStorage.theme = "light")
-      : (localStorage.theme = "dark");
+    darkMode ? (localStorage.theme = "light") : (localStorage.theme = "dark");
   };
 
   const toggleDarkMode = () => {
@@ -58,7 +58,12 @@ export const DarkModeProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
   useEffect(() => {
     if (isPressed) {
-      themeTransition({ slider, background, githubContainer });
+      themeTransition({
+        slider,
+        background,
+        githubContainer,
+        linkedinContainer,
+      });
       setTimeout(darkModeCheck, 100);
       setIsPressed(false);
     } else {
@@ -68,7 +73,14 @@ export const DarkModeProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
   return (
     <DarkModeContext.Provider
-      value={{ darkMode, toggleDarkMode, slider, background, githubContainer }}
+      value={{
+        darkMode,
+        toggleDarkMode,
+        slider,
+        background,
+        githubContainer,
+        linkedinContainer,
+      }}
     >
       {children}
     </DarkModeContext.Provider>

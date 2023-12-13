@@ -1,6 +1,7 @@
 import React from "react";
 import { useDarkMode } from "../DarkModeProvider";
-import { Header, Footer } from "../components";
+import { Header, Footer, Experince } from "../components";
+import { Canvas } from "@react-three/fiber";
 
 type Props = {};
 
@@ -12,7 +13,11 @@ const Main = ({}: Props) => {
       className="bg-color min-h-screen w-screen bg-slate-50 dark:bg-slate-900 dark:text-slate-400"
     >
       <Header />
-      <div></div>
+      <div className="h-[44rem]  w-full">
+        <Canvas className="bg-black">
+          <Experince />
+        </Canvas>
+      </div>
       <Footer />
     </div>
   );

@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { PiGithubLogoDuotone, PiLinkedinLogoFill } from "react-icons/pi";
 import { IconContext } from "react-icons";
 import { useDarkMode } from "../DarkModeProvider";
-import { Links } from "../theme";
 
 interface Props {}
 
@@ -11,7 +10,7 @@ const Footer = (props: Props) => {
   const { darkMode, githubContainer, linkedinContainer } = useDarkMode();
 
   return (
-    <div className="absolute bottom-0 w-screen flex justify-center items-center gap-1 mb-1 sm:gap-4">
+    <div className="absolute bottom-2 w-screen flex justify-center items-center gap-1 sm:gap-4">
       <Link
         to={"https://github.com/Tildozer"}
         target="_blank"

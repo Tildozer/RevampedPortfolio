@@ -12,7 +12,7 @@ const ContactInfo = (props: Props) => {
       className="bg-color min-h-screen w-screen bg-slate-50 dark:bg-slate-900 dark:text-slate-400"
     >
       <Header />
-      <div></div>
+      <div className="min-h-[71.2vh] sm:min-h-[85.02vh]"></div>
       <Footer />
     </div>
   );

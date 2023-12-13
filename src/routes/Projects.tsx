@@ -13,7 +13,7 @@ const Projects = (props: Props) => {
     >
       <Header />
       <ProjectLinks />
-      <div></div>
+      <div className="min-h-[68vh] sm:min-h-[82vh]"></div>
       <Footer />
     </div>
   );

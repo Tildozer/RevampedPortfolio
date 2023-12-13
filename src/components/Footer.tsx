@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { PiGithubLogoDuotone, PiLinkedinLogoFill } from "react-icons/pi";
 import { IconContext } from "react-icons";
 import { useDarkMode } from "../DarkModeProvider";
+import { gsap } from "gsap";
 
 interface Props {}
 
@@ -14,26 +15,35 @@ interface ScrollPosition {
 const Footer = (props: Props) => {
   const { darkMode, githubContainer, linkedinContainer } = useDarkMode();
   const footerContainer = useRef<HTMLDivElement>(null!);
-
   let lastKnownScrollPosition: ScrollPosition = {
     previous: window.scrollY,
     current: window.scrollY,
   };
   let ticking: boolean = false;
+
   const findScrollDirection = (scrollPosition: ScrollPosition) => {
     if (scrollPosition.current >= scrollPosition.previous) {
       console.log("we scrolling down");
-      footerContainer.current.classList.remove("hidden");
+      gsap.to(footerContainer.current, {
+        bottom: "0",
+        display: "flex",
+        position: "sticky",
+        duration: 0.5,
+      });
     } else {
-      footerContainer.current.classList.add("hidden");
-      console.log(footerContainer.current.classList);
+      gsap.to(footerContainer.current, {
+        bottom: "-5rem",
+        display: "none",
+        position: "fixed",
+        duration: 0.5,
+      });
+      setTimeout(() => {}, 500);
     }
     scrollPosition.previous = scrollPosition.current;
     scrollPosition.current = window.scrollY;
   };
   const handleScroll = () => {
     lastKnownScrollPosition.current = window.scrollY;
-    console.log(lastKnownScrollPosition);
     if (!ticking) {
       window.requestAnimationFrame(() => {
         findScrollDirection(lastKnownScrollPosition);
@@ -44,10 +54,24 @@ const Footer = (props: Props) => {
     }
   };
 
+  const handleScrollStop = () => {
+    setTimeout(() => {
+      console.log("stopped");
+      gsap.to(footerContainer.current, {
+        bottom: "0",
+        display: "flex",
+        position: "sticky",
+        duration: 0.75,
+      });
+    }, 2000);
+  };
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scrollend", handleScrollStop);
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      // window.removeEventListener("scrollend", handleScrollStop);
     };
   }, []);
 

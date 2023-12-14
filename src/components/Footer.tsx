@@ -3,19 +3,14 @@ import { Link } from "react-router-dom";
 import { PiGithubLogoDuotone, PiLinkedinLogoFill } from "react-icons/pi";
 import { IconContext } from "react-icons";
 import { useDarkMode } from "../DarkModeProvider";
-import { handleScroll, handleScrollStop } from ".";
+import { handleScroll } from ".";
 
 interface Props {}
 
 const Footer = (props: Props) => {
-  const { darkMode, githubContainer, linkedinContainer, footerContainer } =
-    useDarkMode();
-  // const footerContainer = useRef<HTMLDivElement>(null!);
+  const { githubContainer, linkedinContainer, footerContainer } = useDarkMode();
 
   useEffect(() => {
-    window.addEventListener("scrollend", () =>
-      handleScrollStop(footerContainer),
-    );
     window.addEventListener("scroll", () => handleScroll(footerContainer));
     return () =>
       window.removeEventListener("scroll", () => handleScroll(footerContainer));
@@ -24,7 +19,7 @@ const Footer = (props: Props) => {
   return (
     <div
       ref={footerContainer}
-      className="sticky bottom-0 pb-4 pt-4 w-screen bg-slate-200 dark:bg-slate-900 flex justify-center items-center gap-1 sm:gap-4"
+      className="fixed bottom-0 pb-4 pt-4 w-screen bg-slate-200 dark:bg-slate-900 flex justify-center items-center gap-1 sm:gap-4"
     >
       <Link
         to={"https://github.com/Tildozer"}

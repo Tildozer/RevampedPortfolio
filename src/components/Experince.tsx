@@ -1,26 +1,8 @@
-import React, { Component, RefObject, MutableRefObject, useRef } from "react";
+import React, { useRef } from "react";
 import * as THREE from "three";
-import {
-  extend,
-  useFrame,
-  useThree,
-  ReactThreeFiber,
-} from "@react-three/fiber";
-import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { useFrame, useThree } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
 import { TestCube } from ".";
-
-extend({ OrbitControls });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      orbitControls: ReactThreeFiber.Object3DNode<
-        OrbitControls,
-        typeof OrbitControls
-      >;
-    }
-  }
-}
 
 interface Props {}
 
@@ -42,7 +24,7 @@ const Experince = (props: Props) => {
 
   return (
     <>
-      <orbitControls args={[camera, gl.domElement]} />
+      <OrbitControls enableZoom={false} args={[camera, gl.domElement]} />
       <directionalLight position={[1, 2, 3]} />
       <ambientLight intensity={0.3} />
       <group ref={groupRef}>

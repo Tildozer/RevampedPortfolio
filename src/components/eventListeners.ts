@@ -5,6 +5,21 @@ interface ScrollPosition {
   current: number;
 }
 
+const handleScrollStop = (
+  footerContainer: React.MutableRefObject<HTMLDivElement>,
+) => {
+  clearTimeout(scrollStop);
+
+  scrollStop = setTimeout(() => {
+    console.log("stopped");
+    gsap.to(footerContainer.current, {
+      bottom: "0",
+      display: "flex",
+      duration: 0.75,
+    });
+  }, 750);
+};
+
 let lastKnownScrollPosition: ScrollPosition = {
   previous: window.scrollY,
   current: window.scrollY,
@@ -28,7 +43,7 @@ const findScrollDirection = (
       display: "none",
       duration: 0.5,
     });
-    setTimeout(() => {}, 500);
+    handleScrollStop(footerContainer);
   }
   scrollPosition.previous = scrollPosition.current;
   scrollPosition.current = window.scrollY;
@@ -47,19 +62,4 @@ export const handleScroll = (
 
     ticking = true;
   }
-};
-
-export const handleScrollStop = (
-  footerContainer: React.MutableRefObject<HTMLDivElement>,
-) => {
-  clearTimeout(scrollStop);
-
-  scrollStop = setTimeout(() => {
-    console.log("stopped");
-    gsap.to(footerContainer.current, {
-      bottom: "0",
-      display: "flex",
-      duration: 0.75,
-    });
-  }, 750);
 };

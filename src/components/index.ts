@@ -6,4 +6,8 @@ export { default as ThemeSwitch } from "./ThemeSwitch";
 export { default as ProjectLinks } from "./ProjectLinks";
 export { default as Experince } from "./Experince";
 export { default as TestCube } from "./TestCube";
-export { handleScroll } from "./eventListeners";
+export { default as TechStack } from "./TechStack";
+export {
+  setFooterEventListeners,
+  setHeaderEventListeners,
+} from "./helperFunctions";

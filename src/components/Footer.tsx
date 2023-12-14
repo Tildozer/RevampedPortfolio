@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { PiGithubLogoDuotone, PiLinkedinLogoFill } from "react-icons/pi";
 import { IconContext } from "react-icons";
 import { useDarkMode } from "../DarkModeProvider";
-import { handleScroll } from ".";
+import { setFooterEventListeners } from ".";
 
 interface Props {}
 
@@ -11,9 +11,7 @@ const Footer = (props: Props) => {
   const { githubContainer, linkedinContainer, footerContainer } = useDarkMode();
 
   useEffect(() => {
-    window.addEventListener("scroll", () => handleScroll(footerContainer));
-    return () =>
-      window.removeEventListener("scroll", () => handleScroll(footerContainer));
+    setFooterEventListeners(footerContainer);
   }, []);
 
   return (

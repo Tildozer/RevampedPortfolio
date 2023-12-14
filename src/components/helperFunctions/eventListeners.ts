@@ -1,0 +1,98 @@
+import { gsap } from "gsap";
+import { MutableRefObject } from "react";
+
+interface ScrollPosition {
+  previous: number;
+  current: number;
+}
+
+export const setFooterEventListeners = (
+  footerContainer: React.MutableRefObject<HTMLDivElement>,
+) => {
+  const showFooter = () => {
+    gsap.to(footerContainer.current, {
+      bottom: "0",
+      display: "flex",
+      duration: 0.75,
+    });
+  };
+
+  let timeoutId: null | NodeJS.Timeout;
+
+  const handleScrollStop = () => {
+    if (timeoutId) {
+      clearTimeout(timeoutId); // Clear the previous timeout if it exists
+    }
+    // clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      showFooter();
+      timeoutId = null;
+    }, 2000);
+  };
+
+  const lastKnownScrollPosition: ScrollPosition = {
+    previous: window.scrollY,
+    current: window.scrollY,
+  };
+
+  let ticking: boolean = false;
+
+  const findScrollDirection = (scrollPosition: ScrollPosition) => {
+    if (scrollPosition.current >= scrollPosition.previous) {
+      showFooter();
+    } else {
+      gsap.to(footerContainer.current, {
+        bottom: "-5rem",
+        display: "hidden",
+        duration: 0.5,
+      });
+      handleScrollStop();
+    }
+    scrollPosition.previous = scrollPosition.current;
+    scrollPosition.current = window.scrollY;
+  };
+
+  const handleScroll = () => {
+    lastKnownScrollPosition.current = window.scrollY;
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        findScrollDirection(lastKnownScrollPosition);
+        ticking = false;
+      });
+
+      ticking = true;
+    }
+  };
+
+  window.addEventListener("scroll", handleScroll);
+  return () => window.removeEventListener("scroll", handleScroll);
+};
+
+export const setHeaderEventListeners = (
+  container: MutableRefObject<HTMLDivElement>,
+  underline: MutableRefObject<HTMLDivElement>,
+  width: string,
+) => {
+  const containerElement = container.current;
+  const underlineElement = underline.current;
+
+  if (containerElement && underlineElement) {
+    const mouseOverHandler = () => {
+      gsap.fromTo(
+        underlineElement,
+        { width: "0rem" },
+        { width: width, opacity: 1, duration: 0.5 },
+      );
+      containerElement.removeEventListener("mouseover", mouseOverHandler);
+      containerElement.addEventListener("mouseleave", mouseLeaveEvent);
+    };
+    const mouseLeaveEvent = () => {
+      gsap.to(underlineElement, { width: 0, opacity: 0 });
+      setTimeout(
+        () => containerElement.addEventListener("mouseover", mouseOverHandler),
+        300,
+      );
+    };
+    containerElement.addEventListener("mouseover", mouseOverHandler);
+  }
+};

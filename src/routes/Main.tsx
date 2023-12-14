@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDarkMode } from "../DarkModeProvider";
-import { Header, Footer, Experince } from "../components";
+import { Header, Footer, Experince, TechStack } from "../components";
 import { Canvas } from "@react-three/fiber";
 
 type Props = {};
@@ -11,10 +11,11 @@ const Main = ({}: Props) => {
   return (
     <div
       ref={background}
-      className="bg-color min-h-screen w-screen bg-slate-200 dark:bg-slate-900 dark:text-yellow-500"
+      className="bg-color flex flex-col gap-4 min-h-screen w-screen bg-slate-200 dark:bg-slate-900 dark:text-yellow-500"
     >
       <Header />
-      <div className=" h-[71.2vh] sm:h-[85vh] w-screen">
+      <TechStack />
+      <div className="h-[50vh] sm:h-[85vh] w-screen">
         <Canvas className="bg-slate-400 dark:bg-black">
           <Experince />
         </Canvas>

@@ -1,5 +1,6 @@
 import React, { ReactNode, useEffect, useRef, MutableRefObject } from "react";
 import { gsap } from "gsap";
+import { setHeaderEventListeners } from ".";
 
 interface Props {
   link: ReactNode;
@@ -10,34 +11,8 @@ const Underline = ({ link, width }: Props) => {
   const container: MutableRefObject<HTMLDivElement> = useRef(null!);
   const underline: MutableRefObject<HTMLDivElement> = useRef(null!);
 
-  const setEventListeners = () => {
-    const containerElement = container.current;
-    const underlineElement = underline.current;
-
-    if (containerElement && underlineElement) {
-      const mouseOverHandler = () => {
-        gsap.fromTo(
-          underlineElement,
-          { width: "0rem" },
-          { width: width, opacity: 1, duration: 0.5 },
-        );
-        containerElement.removeEventListener("mouseover", mouseOverHandler);
-        containerElement.addEventListener("mouseleave", mouseLeaveEvent);
-      };
-      const mouseLeaveEvent = () => {
-        gsap.to(underlineElement, { width: 0, opacity: 0 });
-        setTimeout(
-          () =>
-            containerElement.addEventListener("mouseover", mouseOverHandler),
-          300,
-        );
-      };
-      containerElement.addEventListener("mouseover", mouseOverHandler);
-    }
-  };
-
   useEffect(() => {
-    setTimeout(setEventListeners, 500);
+    setTimeout(() => setHeaderEventListeners(container, underline, width), 500);
   }, []);
 
   return (

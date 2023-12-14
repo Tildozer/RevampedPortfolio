@@ -6,12 +6,12 @@ interface Projects {
   id: number;
   mainLink: string;
   githubLink: string;
-  image?: File;
+  // image?: File;
   descriptionPoints: string[];
 }
 
 const makeProjectContainers = (projects: Projects[]) => {
-  projects.map(({ id, mainLink, githubLink, image, descriptionPoints }) => {});
+  projects.map(({ id, mainLink, githubLink, descriptionPoints }) => {});
 };
 
 const ProjectLinks = (props: Props) => {

@@ -9,18 +9,18 @@ import {
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { TestCube } from ".";
 
-// extend({ OrbitControls });
+extend({ OrbitControls });
 
-// declare global {
-//   namespace JSX {
-//     interface IntrinsicElements {
-//       orbitControls: ReactThreeFiber.Object3DNode<
-//         OrbitControls,
-//         typeof OrbitControls
-//       >;
-//     }
-//   }
-// }
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      orbitControls: ReactThreeFiber.Object3DNode<
+        OrbitControls,
+        typeof OrbitControls
+      >;
+    }
+  }
+}
 
 interface Props {}
 
@@ -28,6 +28,7 @@ const Experince = (props: Props) => {
   const { camera, gl } = useThree();
   const cubeRef = useRef<THREE.Mesh>(null!);
   const groupRef = useRef<THREE.Group>(null!);
+  camera.position.z = 50;
 
   useFrame((state, delta) => {
     if (cubeRef.current) cubeRef.current.rotation.y += delta;
@@ -41,7 +42,7 @@ const Experince = (props: Props) => {
 
   return (
     <>
-      {/* <orbitControls args={[camera, gl.domElement]} /> */}
+      <orbitControls args={[camera, gl.domElement]} />
       <directionalLight position={[1, 2, 3]} />
       <ambientLight intensity={0.3} />
       <group ref={groupRef}>

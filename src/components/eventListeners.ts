@@ -20,14 +20,12 @@ const findScrollDirection = (
     gsap.to(footerContainer.current, {
       bottom: "0",
       display: "flex",
-      position: "sticky",
       duration: 0.5,
     });
   } else {
     gsap.to(footerContainer.current, {
       bottom: "-5rem",
       display: "none",
-      position: "fixed",
       duration: 0.5,
     });
     setTimeout(() => {}, 500);
@@ -57,10 +55,10 @@ export const handleScrollStop = (
   clearTimeout(scrollStop);
 
   scrollStop = setTimeout(() => {
+    console.log("stopped");
     gsap.to(footerContainer.current, {
       bottom: "0",
       display: "flex",
-      position: "sticky",
       duration: 0.75,
     });
   }, 750);

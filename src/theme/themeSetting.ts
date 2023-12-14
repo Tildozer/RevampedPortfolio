@@ -7,7 +7,9 @@ export interface ThemeSettings {
   buttonColor: string;
   textColor: string;
   sliderPosition: string;
-  githubBackgroundColor: string;
+  githubLogoColor: string;
+  linkedinLogoColor: string;
+  footerLinkBackgroundColor: string;
 }
 
 export type Slider = MutableRefObject<HTMLDivElement>;
@@ -20,14 +22,17 @@ export interface ThemeTransitionItems {
   background: Background;
   githubContainer: Links;
   linkedinContainer: Links;
+  footerContainer: Background;
 }
 
 export const lightModeSettings: ThemeSettings = {
-  backgroundColor: "rgb(248 250 252 / var(--tw-bg-opacity)",
+  backgroundColor: "rgb(226 232 240 / var(--tw-bg-opacity)",
   buttonColor: "rgb(30 41 59 / var(--tw-bg-opacity)",
-  textColor: "rgb(15 23 42 / var(--tw-text-opacity)",
+  textColor: "rgb(0 0 0 / var(--tw-bg-opacity)",
   sliderPosition: "0.75rem",
-  githubBackgroundColor: "rgb(0 0 0 / var(--tw-bg-opacity))",
+  footerLinkBackgroundColor: "rgb(0 0 0 / var(--tw-bg-opacity)",
+  githubLogoColor: "rgb(251 146 60 / var(--tw-text-opacity)",
+  linkedinLogoColor: "#0077b5",
 };
 
 export const darkModeSettings: ThemeSettings = {
@@ -35,5 +40,7 @@ export const darkModeSettings: ThemeSettings = {
   buttonColor: "rgb(148 163 184 / var(--tw-bg-opacity)",
   textColor: "rgb(234 179 8 / var(--tw-text-opacity)",
   sliderPosition: "1.75rem",
-  githubBackgroundColor: "rgb(71 85 105 / var(--tw-bg-opacity))",
+  footerLinkBackgroundColor: "rgb(71 85 105 / var(--tw-bg-opacity)",
+  githubLogoColor: "rgb(34 211 238 / var(--tw-text-opacity)",
+  linkedinLogoColor: "rgb(255, 255, 255)",
 };

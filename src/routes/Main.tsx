@@ -11,11 +11,11 @@ const Main = ({}: Props) => {
   return (
     <div
       ref={background}
-      className="bg-color min-h-screen w-screen bg-slate-50 dark:bg-slate-900 dark:text-slate-400"
+      className="bg-color min-h-screen w-screen bg-slate-200 dark:bg-slate-900 dark:text-yellow-500"
     >
       <Header />
-      <div className=" h-screen sm:h-[44rem] w-screen">
-        <Canvas className="bg-black">
+      <div className=" h-[71.2vh] sm:h-[85vh] w-screen">
+        <Canvas className="bg-slate-400 dark:bg-black">
           <Experince />
         </Canvas>
       </div>

@@ -27,7 +27,7 @@ export interface ThemeTransitionItems {
 
 export const lightModeSettings: ThemeSettings = {
   backgroundColor: "rgb(226 232 240 / var(--tw-bg-opacity)",
-  buttonColor: "rgb(30 41 59 / var(--tw-bg-opacity)",
+  buttonColor: "rgb(30 58 138 / var(--tw-bg-opacity)",
   textColor: "rgb(0 0 0 / var(--tw-bg-opacity)",
   sliderPosition: "0.75rem",
   footerLinkBackgroundColor: "rgb(0 0 0 / var(--tw-bg-opacity)",

@@ -10,4 +10,4 @@ export { default as TechStack } from "./TechStack";
 export {
   setFooterEventListeners,
   setHeaderEventListeners,
-} from "./helpersAndFunctions";
+} from "./helperFunctions";

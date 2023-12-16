@@ -4,39 +4,44 @@ import { TbBrandCpp } from "react-icons/tb";
 import { RiJavascriptFill, RiFlutterFill } from "react-icons/ri";
 import { TiHtml5 } from "react-icons/ti";
 import { BiLogoTypescript, BiLogoTailwindCss } from "react-icons/bi";
-import { SiDart } from "react-icons/si";
+import { SiDart, SiJest } from "react-icons/si";
 import { FaCss3Alt } from "react-icons/fa";
 
 type Props = {};
 interface TechnicalSkills {
-  id: number;
+  name: string;
   Icon: IconType;
 }
 
 const TechStack = (props: Props) => {
   const techs: TechnicalSkills[] = [
-    { id: 0, Icon: RiJavascriptFill },
-    { id: 1, Icon: BiLogoTypescript },
-    { id: 2, Icon: FaCss3Alt },
-    { id: 3, Icon: BiLogoTailwindCss },
-    { id: 4, Icon: TiHtml5 },
-    { id: 5, Icon: TbBrandCpp },
-    { id: 6, Icon: RiFlutterFill },
-    { id: 7, Icon: SiDart },
+    { name: "Javascript", Icon: RiJavascriptFill },
+    { name: "Typescript", Icon: BiLogoTypescript },
+    { name: "CSS", Icon: FaCss3Alt },
+    { name: "Tailwind", Icon: BiLogoTailwindCss },
+    { name: "HTML", Icon: TiHtml5 },
+    { name: "C++", Icon: TbBrandCpp },
+    { name: "Jest", Icon: SiJest },
+    { name: "Flutter", Icon: RiFlutterFill },
+    { name: "Dart", Icon: SiDart },
   ];
 
   const makeTechStack = (techs: TechnicalSkills[]) => {
-    return techs.map(({ id, Icon }) => {
+    return techs.map(({ name, Icon }) => {
       return (
-        <div key={id} className="h-fit">
+        <div
+          key={name}
+          className="flex flex-col justify-center items-center bg-white p-2 rounded-md break-all min-w-[6rem]"
+        >
           <Icon />
+          <span className="text-sm pt-1">{name}</span>
         </div>
       );
     });
   };
 
   return (
-    <div className="content-start sm:justify-center flex flex-wrap w-screen gap-4 text-6xl p-4 border-solid border-l-0 border-r-0 bg-orange-200 dark:bg-slate-600 border-slate-950 border-2 self-center z-10">
+    <div className="content-start max-h-96 overflow-scroll grid grid-flow-col grid-rows-3 gap-2 w-screen text-6xl p-4 border-solid border-l-0 border-r-0 bg-orange-200 dark:bg-slate-600 border-slate-950 border-2 self-center sm:justify-start sm:grid-rows-1">
       {makeTechStack(techs)}
     </div>
   );

@@ -7,6 +7,9 @@ export default {
       fontFamily: {
         'Bebas' : ['Bebas Neue', 'verdana'],
         'Playfair': ['Playfair Display', 'serif'],
+      },
+      screens: {
+        xs: '530px'
       }
     },
   },

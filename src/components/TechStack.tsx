@@ -11,29 +11,41 @@ type Props = {};
 interface TechnicalSkills {
   name: string;
   Icon: IconType;
+  color: string;
 }
 
 const TechStack = (props: Props) => {
   const techs: TechnicalSkills[] = [
-    { name: "Javascript", Icon: RiJavascriptFill },
-    { name: "Typescript", Icon: BiLogoTypescript },
-    { name: "CSS", Icon: FaCss3Alt },
-    { name: "Tailwind", Icon: BiLogoTailwindCss },
-    { name: "HTML", Icon: TiHtml5 },
-    { name: "C++", Icon: TbBrandCpp },
-    { name: "Jest", Icon: SiJest },
-    { name: "Flutter", Icon: RiFlutterFill },
-    { name: "Dart", Icon: SiDart },
+    { name: "Javascript", Icon: RiJavascriptFill, color: "#f7df1e" },
+    { name: "Typescript", Icon: BiLogoTypescript, color: "#007acc" },
+    { name: "CSS", Icon: FaCss3Alt, color: "#264de4" },
+    { name: "Tailwind", Icon: BiLogoTailwindCss, color: "#06b6d4" },
+    { name: "HTML", Icon: TiHtml5, color: "#e34c26" },
+    { name: "C++", Icon: TbBrandCpp, color: "#FFFFFF" },
+    { name: "Flutter", Icon: RiFlutterFill, color: "#027DFD" },
+    { name: "Jest", Icon: SiJest, color: "#32CD32" },
+    { name: "Dart", Icon: SiDart, color: "" },
   ];
 
   const makeTechStack = (techs: TechnicalSkills[]) => {
-    return techs.map(({ name, Icon }) => {
+    return techs.map(({ name, Icon, color }) => {
       return (
         <div
           key={name}
-          className="flex flex-col justify-center items-center bg-white p-2 rounded-md break-all min-w-[6rem]"
+          className={`flex flex-col justify-center items-center p-2 rounded-md break-all min-w-[6rem] bg-black dark:bg-slate-500`}
         >
-          <Icon />
+          <span
+            className={`text-${color} ${
+              name === "Typescript" ||
+              name === "CSS" ||
+              name === "HTML" ||
+              name === "Flutter"
+                ? "bg-white rounded-lg"
+                : ""
+            }`}
+          >
+            <Icon />
+          </span>
           <span className="text-sm pt-1">{name}</span>
         </div>
       );
@@ -41,7 +53,7 @@ const TechStack = (props: Props) => {
   };
 
   return (
-    <div className="content-start max-h-96 overflow-scroll grid grid-flow-col grid-rows-3 gap-2 w-screen text-6xl p-4 border-solid border-l-0 border-r-0 bg-orange-200 dark:bg-slate-600 border-slate-950 border-2 self-center sm:justify-start sm:grid-rows-1">
+    <div className="content-start max-h-96 overflow-scroll grid grid-flow-col grid-rows-3 gap-2 w-screen text-6xl p-4 border-solid border-l-0 border-r-0 bg-orange-200 dark:bg-blue-900 text-white dark:text-black border-slate-950 border-2 self-center sm:justify-start lg:justify-center sm:grid-rows-1">
       {makeTechStack(techs)}
     </div>
   );

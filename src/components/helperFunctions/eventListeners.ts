@@ -9,6 +9,11 @@ interface ScrollPosition {
 export const setFooterEventListeners = (
   footerContainer: React.MutableRefObject<HTMLDivElement>,
 ) => {
+  const lastKnownScrollPosition: ScrollPosition = {
+    previous: window.scrollY,
+    current: window.scrollY,
+  };
+
   const showFooter = () => {
     gsap.to(footerContainer.current, {
       bottom: "0",
@@ -23,16 +28,10 @@ export const setFooterEventListeners = (
     if (timeoutId) {
       clearTimeout(timeoutId); // Clear the previous timeout if it exists
     }
-    // clearTimeout(timeoutId);
     timeoutId = setTimeout(() => {
       showFooter();
       timeoutId = null;
     }, 2000);
-  };
-
-  const lastKnownScrollPosition: ScrollPosition = {
-    previous: window.scrollY,
-    current: window.scrollY,
   };
 
   let ticking: boolean = false;

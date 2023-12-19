@@ -1,7 +1,6 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { PiGithubLogoDuotone, PiLinkedinLogoFill } from "react-icons/pi";
-import { IconContext } from "react-icons";
 import { useDarkMode } from "../DarkModeProvider";
 import { setFooterEventListeners } from ".";
 

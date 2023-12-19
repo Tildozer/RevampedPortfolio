@@ -1,6 +1,6 @@
 import React from "react";
 import { Nav, ThemeSwitch } from ".";
-import { useDarkMode } from "../DarkModeProvider";
+import { useDarkMode } from "../../DarkModeProvider";
 
 interface Props {}
 

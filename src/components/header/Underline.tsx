@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect, useRef, MutableRefObject } from "react";
 import { gsap } from "gsap";
-import { setHeaderEventListeners } from ".";
+import { setHeaderEventListeners } from "..";
 
 interface Props {
   link: ReactNode;

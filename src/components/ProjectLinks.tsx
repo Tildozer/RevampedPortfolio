@@ -10,9 +10,9 @@ interface Projects {
   descriptionPoints: string[];
 }
 
-const makeProjectContainers = (projects: Projects[]) => {
-  projects.map(({ id, mainLink, githubLink, descriptionPoints }) => {});
-};
+// const makeProjectContainers = (projects: Projects[]) => {
+//   projects.map(({ id, mainLink, githubLink, descriptionPoints }) => {});
+// };
 
 const ProjectLinks = (props: Props) => {
   return <div className="h-[200rem]">ProjectLinks</div>;

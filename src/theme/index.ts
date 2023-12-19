@@ -7,4 +7,4 @@ export type {
   Links,
 } from "./themeSetting";
 export { darkModeSettings, lightModeSettings } from "./themeSetting";
-export { themeTransition } from "./themeTransition";
+export { themeTransition, techStackTransition } from "./themeTransition";

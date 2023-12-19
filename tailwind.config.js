@@ -11,6 +11,7 @@ export default {
     {pattern: /#06b6d4/},
     {pattern: /#e34c26/},
     {pattern: /#027DFD/},
+    {pattern: /#0175C2/},
   ],
   theme: {
     extend: {
@@ -30,6 +31,7 @@ export default {
         "#06b6d4": '#06b6d4',
         "#e34c26": '#e34c26',
         "#027DFD": '#027DFD',
+        '#0175C2': '#0175C2'
       }
     },
   },

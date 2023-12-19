@@ -1,5 +1,7 @@
 import React, { ReactNode } from "react";
 import SetIcon from "./SetIcon";
+// import { useDarkMode } from "../../DarkModeProvider";
+import { useDarkMode } from "../../DarkModeProvider";
 
 type Props = {};
 
@@ -17,7 +19,7 @@ const techs: TechnicalSkills[] = [
   { name: "C++", iconName: "TbBrandCpp", color: "#FFFFFF" },
   { name: "Flutter", iconName: "SiFlutter", color: "#027DFD" },
   { name: "Jest", iconName: "SiJest", color: "#32CD32" },
-  { name: "Dart", iconName: "SiDart", color: "" },
+  { name: "Dart", iconName: "SiDart", color: "#0175C2" },
 ];
 
 const giveIconBackground = (name: string): string => {
@@ -25,12 +27,17 @@ const giveIconBackground = (name: string): string => {
     case "Typescript":
     case "CSS":
       return "bg-white rounded-lg";
+    case "Dart":
+      return "bg-white rounded-lg p-1";
+    case "Javascript":
+      return "bg-black rounded-lg";
     default:
       return " ";
   }
 };
 
 const TechStack = (props: Props) => {
+  const { techStackContainer } = useDarkMode();
   const makeTechStack = (techs: TechnicalSkills[]) => {
     return techs.map(({ name, iconName, color }) => {
       return (
@@ -48,7 +55,10 @@ const TechStack = (props: Props) => {
   };
 
   return (
-    <div className="content-start max-h-96 overflow-scroll grid grid-flow-col grid-rows-3 gap-2 w-screen text-6xl p-4 border-solid border-l-0 border-r-0 bg-orange-200 dark:bg-blue-900 text-white dark:text-black border-slate-950 border-2 self-center sm:justify-start lg:justify-center sm:grid-rows-1">
+    <div
+      ref={techStackContainer}
+      className="content-start max-h-96 overflow-scroll grid grid-flow-col grid-rows-3 gap-2 w-screen text-6xl p-4 border-solid border-l-0 border-r-0 bg-orange-200 dark:bg-blue-900 text-yellow-500 dark:text-black border-slate-950 border-2 self-center sm:justify-start lg:justify-center sm:grid-rows-1"
+    >
       {makeTechStack(techs)}
     </div>
   );

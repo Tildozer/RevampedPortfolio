@@ -1,23 +1,45 @@
 import React from "react";
-import { IconType } from "react-icons";
-import * as TbIcon from "react-icons/tb";
-import * as SiIcon from "react-icons/si";
+import {
+  TbBrandCss3,
+  TbBrandTypescript,
+  TbBrandTailwind,
+  TbBrandCpp,
+  TbError404Off,
+} from "react-icons/tb";
+import {
+  SiJavascript,
+  SiHtml5,
+  SiFlutter,
+  SiJest,
+  SiDart,
+} from "react-icons/si";
 
 type Props = {
   iconName: string;
 };
 
 const SetIcon = ({ iconName }: Props) => {
-  let Icon: IconType;
-  switch (iconName.slice(0, 2)) {
-    case "Tb":
-      Icon = TbIcon[iconName];
-      return <Icon />;
-    case "Si":
-      Icon = SiIcon[iconName];
-      return <Icon />;
+  switch (iconName) {
+    case "TbBrandTypescript":
+      return <TbBrandTypescript />;
+    case "TbBrandCss3":
+      return <TbBrandCss3 />;
+    case "TbBrandTailwind":
+      return <TbBrandTailwind />;
+    case "TbBrandCpp":
+      return <TbBrandCpp />;
+    case "SiJavascript":
+      return <SiJavascript />;
+    case "SiHtml5":
+      return <SiHtml5 />;
+    case "SiFlutter":
+      return <SiFlutter />;
+    case "SiJest":
+      return <SiJest />;
+    case "SiDart":
+      return <SiDart />;
     default:
-      return <TbIcon.TbError404Off />;
+      return <TbError404Off />;
   }
 };
 

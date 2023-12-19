@@ -1,15 +1,14 @@
 import { MutableRefObject } from "react";
-import { IconType } from "react-icons";
-import {} from "react-router-dom";
 
 export interface ThemeSettings {
   backgroundColor: string;
-  buttonColor: string;
+  techStackContainerBackgroundColor: string;
   textColor: string;
   sliderPosition: string;
   githubLogoColor: string;
   linkedinLogoColor: string;
   footerLinkBackgroundColor: string;
+  techStackChildrenBackgroundColor: string;
 }
 
 export type Slider = MutableRefObject<HTMLDivElement>;
@@ -23,11 +22,13 @@ export interface ThemeTransitionItems {
   githubContainer: Links;
   linkedinContainer: Links;
   footerContainer: Background;
+  techStackContainer: Background;
 }
 
 export const lightModeSettings: ThemeSettings = {
   backgroundColor: "rgb(226 232 240 / var(--tw-bg-opacity)",
-  buttonColor: "rgb(30 58 138 / var(--tw-bg-opacity)",
+  techStackContainerBackgroundColor: "rgb(254 215 170 / var(--tw-bg-opacity)",
+  techStackChildrenBackgroundColor: "rgb(0 0 0 / var(--tw-bg-opacity)",
   textColor: "rgb(0 0 0 / var(--tw-bg-opacity)",
   sliderPosition: "0.75rem",
   footerLinkBackgroundColor: "rgb(0 0 0 / var(--tw-bg-opacity)",
@@ -37,7 +38,8 @@ export const lightModeSettings: ThemeSettings = {
 
 export const darkModeSettings: ThemeSettings = {
   backgroundColor: "rgb(15 23 42 / var(--tw-bg-opacity)",
-  buttonColor: "rgb(148 163 184 / var(--tw-bg-opacity)",
+  techStackContainerBackgroundColor: "rgb(30 58 138 / var(--tw-bg-opacity)",
+  techStackChildrenBackgroundColor: "rgb(100 116 139 / var(--tw-bg-opacity)",
   textColor: "rgb(234 179 8 / var(--tw-text-opacity)",
   sliderPosition: "1.75rem",
   footerLinkBackgroundColor: "rgb(71 85 105 / var(--tw-bg-opacity)",

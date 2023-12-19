@@ -4,6 +4,7 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Main, Projects, Contact } from "./routes";
 import { DarkModeProvider } from "./DarkModeProvider";
+import 'vite/modulepreload-polyfill'
 
 const root = ReactDOM.createRoot(document.getElementById("root") as Element);
 

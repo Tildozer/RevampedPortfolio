@@ -1,6 +1,5 @@
 import React, { ReactNode } from "react";
 import SetIcon from "./SetIcon";
-// import { useDarkMode } from "../../DarkModeProvider";
 import { useDarkMode } from "../../DarkModeProvider";
 
 type Props = {};
@@ -32,7 +31,7 @@ const giveIconBackground = (name: string): string => {
     case "Javascript":
       return "bg-black rounded-lg";
     default:
-      return " ";
+      return "";
   }
 };
 
@@ -43,7 +42,7 @@ const TechStack = (props: Props) => {
       return (
         <div
           key={name}
-          className={`flex flex-col justify-center items-center p-2 rounded-md break-all min-w-[6rem] bg-black dark:bg-slate-500`}
+          className={`flex flex-col justify-center items-center p-2 rounded-md break-all min-w-[6rem] bg-black dark:bg-slate-500 border-solid border-2 border-slate-600 shadow-sm shadow-black hover:shadow-md hover:shadow-black hover:-translate-y-1 hover:border-yellow-500`}
         >
           <span className={`text-${color} ${giveIconBackground(name)}`}>
             <SetIcon iconName={iconName} />

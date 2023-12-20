@@ -11,13 +11,10 @@ export default defineConfig({
   build:
     {
         manifest: true,
-        rollupOptions: {
-          input: '/path/to/main.js',
-        },
         commonjsOptions: {
           exclude: ['ckeditor/*'],
         },
-        outDir: '../dist',
+        outDir: './dist',
         emptyOutDir: true,
         sourcemap: true
     }

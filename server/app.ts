@@ -1,20 +1,22 @@
+import { config } from "dotenv";
 import express, { Express, NextFunction, Request, Response } from "express";
 import path from "path";
 import morgan from "morgan";
 import cors from "cors";
-import ViteExpress from "vite-express";
 import { default as api } from "./api/index.js";
+import url from "url";
 
+config();
 const app: Express = express();
-const port: number = 4000;
+const __filename = url.fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(cors());
 
-app.get("/", (req, res) =>
-  res.sendFile(path.join(__dirname, "../static/index.html")),
-);
+app.use("/dist", express.static(path.join(__dirname, "../dist")));
+app.use("/static", express.static(path.join(__dirname, "../static")));
 
 app.use((req: Request, res: Response, next: NextFunction) => {
   console.log("<____Body Logger START____>");
@@ -25,9 +27,5 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 });
 
 app.use("/api", api);
-
-ViteExpress.listen(app, port, () => {
-  console.log(`server is listening on port ${port}`);
-});
 
 export default app;

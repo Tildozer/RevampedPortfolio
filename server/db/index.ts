@@ -23,7 +23,7 @@ const resetTables = async () => {
 };
 
 const createTechstack = async () => {
-  await Promise.all([
+  const techStack = await Promise.all([
     createTechItem({
       name: "Javascript",
       iconName: "SiJavascript",
@@ -50,13 +50,14 @@ const createTechstack = async () => {
     createTechItem({ name: "Jest", iconName: "SiJest", color: "#32CD32" }),
     createTechItem({ name: "Dart", iconName: "SiDart", color: "#0175C2" }),
   ]);
+  techStack.map((tech) => console.log(tech));
 };
 
 export const syncAndSeed = async () => {
-  console.log("reseting tables");
+  console.log("----reseting tables----");
   await resetTables();
-  console.log("tables reset");
-  console.log("creating techStack");
+  console.log("----tables reset----");
+  console.log("----creating techStack----");
   await createTechstack();
-  console.log("techStack finished");
+  console.log("----techStack finished----");
 };

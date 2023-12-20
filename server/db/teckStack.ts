@@ -2,14 +2,17 @@ import client from "./client.js";
 
 export const createTechItem = async ({ name, iconName, color }) => {
   try {
-    await client.query(
+    const {
+      rows: [techItem],
+    } = await client.query(
       `
           INSERT INTO tech_stack(name, "iconName", color)
           VALUES($1, $2, $3)
-          RETURNING *
+          RETURNING *;
         `,
       [name, iconName, color],
     );
+    return techItem;
   } catch (error) {
     throw error;
   }

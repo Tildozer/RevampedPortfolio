@@ -1,6 +1,7 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import SetIcon from "./SetIcon";
 import { useDarkMode } from "../../DarkModeProvider";
+import { fetchAllTechs } from "../../api/index.js";
 
 type Props = {};
 
@@ -9,17 +10,6 @@ interface TechnicalSkills {
   iconName: string;
   color: string;
 }
-const techs: TechnicalSkills[] = [
-  { name: "Javascript", iconName: "SiJavascript", color: "#f7df1e" },
-  { name: "Typescript", iconName: "TbBrandTypescript", color: "#007acc" },
-  { name: "CSS", iconName: "TbBrandCss3", color: "#264de4" },
-  { name: "Tailwind", iconName: "TbBrandTailwind", color: "#06b6d4" },
-  { name: "HTML", iconName: "SiHtml5", color: "#e34c26" },
-  { name: "C++", iconName: "TbBrandCpp", color: "#FFFFFF" },
-  { name: "Flutter", iconName: "SiFlutter", color: "#027DFD" },
-  { name: "Jest", iconName: "SiJest", color: "#32CD32" },
-  { name: "Dart", iconName: "SiDart", color: "#0175C2" },
-];
 
 const giveIconBackground = (name: string): string => {
   switch (name) {
@@ -37,6 +27,17 @@ const giveIconBackground = (name: string): string => {
 
 const TechStack = (props: Props) => {
   const { techStackContainer } = useDarkMode();
+  const [techs, setTechs] = useState<TechnicalSkills[] | []>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data: TechnicalSkills[] = await fetchAllTechs();
+      setTechs(data);
+    };
+
+    fetchData();
+  }, []);
+
   const makeTechStack = (techs: TechnicalSkills[]) => {
     return techs.map(({ name, iconName, color }) => {
       return (
@@ -56,9 +57,9 @@ const TechStack = (props: Props) => {
   return (
     <div
       ref={techStackContainer}
-      className="content-start max-h-96 overflow-scroll grid grid-flow-col grid-rows-3 gap-2 w-screen text-6xl p-4 border-solid border-l-0 border-r-0 bg-orange-200 dark:bg-blue-900 text-yellow-500 dark:text-black border-slate-950 border-2 self-center sm:justify-start lg:justify-center sm:grid-rows-1"
+      className="content-start min-h-36 max-h-96 overflow-scroll grid grid-flow-col grid-rows-3 gap-2 w-screen text-6xl p-4 border-solid border-l-0 border-r-0 bg-orange-200 dark:bg-blue-900 text-yellow-500 dark:text-black border-slate-950 border-2 self-center sm:justify-start lg:justify-center sm:grid-rows-1"
     >
-      {makeTechStack(techs)}
+      {techs.length ? makeTechStack(techs) : null}
     </div>
   );
 };

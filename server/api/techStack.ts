@@ -1,12 +1,11 @@
 import express, { Request, Response } from "express";
-import techStack from "./techStack.js";
+import { getAllTechs } from "../db/index.js";
 
 const router = express.Router();
 
 router.get("/", async (req: Request, res: Response) => {
-  res.send("Server set up");
+  const techStack = await getAllTechs();
+  res.send(techStack);
 });
-
-router.use("/tech", techStack);
 
 export default router;

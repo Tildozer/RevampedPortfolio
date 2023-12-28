@@ -1,6 +1,6 @@
 export { default as client } from "./client.js";
 import { default as client } from "./client.js";
-import { createTechItem } from "./teckStack.js";
+import { createTechItem, getAllTechs } from "./teckStack.js";
 
 const resetTables = async () => {
   const resetSQL = `
@@ -61,3 +61,5 @@ export const syncAndSeed = async () => {
   await createTechstack();
   console.log("----techStack finished----");
 };
+
+export { getAllTechs };

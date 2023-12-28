@@ -17,3 +17,17 @@ export const createTechItem = async ({ name, iconName, color }) => {
     throw error;
   }
 };
+
+export const getAllTechs = async () => {
+  try {
+    const { rows: techStack } = await client.query(
+      `
+        SELECT * FROM tech_stack;
+      `,
+    );
+
+    return techStack;
+  } catch (error) {
+    throw error;
+  }
+};

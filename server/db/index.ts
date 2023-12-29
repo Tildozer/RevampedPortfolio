@@ -1,10 +1,10 @@
-export { default as client } from "./client.js";
-import { default as client } from "./client.js";
+import client from "./client.js";
 import { createTechItem, getAllTechs } from "./teckStack.js";
 
 const resetTables = async () => {
   const resetSQL = `
     DROP TABLE IF EXISTS tech_stack;
+    DROP TABLE IF EXISTS projects_descriptions;
     DROP TABLE IF EXISTS projects;
 
     CREATE TABLE tech_stack(
@@ -15,8 +15,15 @@ const resetTables = async () => {
         url VARCHAR(255) NOT NULL
     );
     CREATE TABLE projects(
-        id SERIAL PRIMARY KEY,
-        "projectName" VARCHAR(100)
+      id SERIAL PRIMARY KEY,
+      "projectName" VARCHAR(100) UNIQUE NOT NULL,
+      "githubLink" VARCHAR(255) UNIQUE NOT NULL,
+      "projectLink" VARCHAR(255) UNIQUE NOT NULL
+    );
+    CREATE TABLE projects_descriptions(
+      id SERIAL PRIMARY KEY,
+      "projectId" INTEGER REFERENCES projects (id),
+      description VARCHAR(255) NOT NULL
     );
     `;
 
@@ -92,4 +99,4 @@ export const syncAndSeed = async () => {
   console.log("----techStack finished----");
 };
 
-export { getAllTechs };
+export { getAllTechs, client };

@@ -32,6 +32,15 @@ export default {
         "#e34c26": '#e34c26',
         "#027DFD": '#027DFD',
         '#0175C2': '#0175C2'
+      },
+      keyframes: {
+        wiggle: {
+          '0%, 100%': { transform: 'rotate(-3deg)' },
+          '50%': { transform: 'rotate(3deg)' },
+        },
+      },
+      animation: {
+        wiggle: 'wiggle 0.5s ease-in-out 3'
       }
     },
   },

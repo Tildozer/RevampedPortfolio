@@ -2,6 +2,7 @@ import React, { ReactNode, useEffect, useState } from "react";
 import SetIcon from "./SetIcon";
 import { useDarkMode } from "../../DarkModeProvider";
 import { fetchAllTechs } from "../../api/index.js";
+import { Link } from "react-router-dom";
 
 type Props = {};
 
@@ -9,6 +10,7 @@ interface TechnicalSkills {
   name: string;
   iconName: string;
   color: string;
+  url: string;
 }
 
 const giveIconBackground = (name: string): string => {
@@ -28,28 +30,35 @@ const giveIconBackground = (name: string): string => {
 const TechStack = (props: Props) => {
   const { techStackContainer } = useDarkMode();
   const [techs, setTechs] = useState<TechnicalSkills[] | []>([]);
+  const fetchData = async () => {
+    const data: TechnicalSkills[] = await fetchAllTechs();
+    setTechs(data);
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      const data: TechnicalSkills[] = await fetchAllTechs();
-      setTechs(data);
-    };
-
     fetchData();
   }, []);
 
   const makeTechStack = (techs: TechnicalSkills[]) => {
-    return techs.map(({ name, iconName, color }) => {
+    return techs.map(({ name, iconName, color, url }) => {
       return (
-        <div
+        <Link
+          to={url}
+          target="_blank"
           key={name}
-          className={`flex flex-col justify-center items-center p-2 rounded-md break-all min-w-[6rem] bg-black dark:bg-slate-500 border-solid border-2 border-slate-600 shadow-sm shadow-black hover:shadow-md hover:shadow-black hover:-translate-y-1 hover:border-yellow-500`}
+          className={`flex flex-col justify-center items-center p-2 rounded-md break-all min-w-[6rem] bg-black dark:bg-slate-500 border-solid border-2 border-slate-600 shadow-sm shadow-black hover:shadow-md hover:shadow-black hover:border-yellow-500 hover:-translate-y-3 transition duration-500 group`}
         >
-          <span className={`text-${color} ${giveIconBackground(name)}`}>
+          <span
+            className={`text-${color} ${giveIconBackground(
+              name,
+            )} group-hover:animate-wiggle transition duration-500`}
+          >
             <SetIcon iconName={iconName} />
           </span>
-          <span className="text-sm pt-1">{name}</span>
-        </div>
+          <span className="text-sm pt-1 group-hover:scale-125 transition duration-500">
+            {name}
+          </span>
+        </Link>
       );
     });
   };
@@ -57,7 +66,7 @@ const TechStack = (props: Props) => {
   return (
     <div
       ref={techStackContainer}
-      className="content-start min-h-36 max-h-96 overflow-scroll grid grid-flow-col grid-rows-3 gap-2 w-screen text-6xl p-4 border-solid border-l-0 border-r-0 bg-orange-200 dark:bg-blue-900 text-yellow-500 dark:text-black border-slate-950 border-2 self-center sm:justify-start lg:justify-center sm:grid-rows-1"
+      className="content-start min-h-[9rem] max-h-96 overflow-scroll grid grid-flow-col grid-rows-3 gap-2 w-screen text-6xl p-4 border-solid border-l-0 border-r-0 bg-orange-200 dark:bg-blue-900 text-yellow-500 dark:text-black border-slate-950 border-2 self-center sm:justify-start lg:justify-center sm:grid-rows-1"
     >
       {techs.length ? makeTechStack(techs) : null}
     </div>

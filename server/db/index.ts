@@ -1,4 +1,5 @@
 import client from "./client.js";
+import { createProject } from "./projects.js";
 import { createTechItem, getAllTechs } from "./teckStack.js";
 
 const resetTables = async () => {
@@ -90,6 +91,30 @@ const createTechstack = async () => {
   techStack.map((tech) => console.log(tech));
 };
 
+const createProjectDescriptions = async ({ id }) => {};
+
+const createProjects = async () => {
+  const strangersThings = await createProject({
+    projectName: "Strangers Things",
+    githubLink: "https://github.com/Tildozer/strangersThngs",
+    projectLink: "https://strangersproj.netlify.app",
+  });
+  const reKANstructed = await createProject({
+    projectName: "ReKANstructed",
+    githubLink: "https://github.com/Team-Kan/Lego-shopper",
+    projectLink: "https://rekanstructed.onrender.com/",
+  });
+  const galaxyGenerator = await createProject({
+    projectName: "Galaxy generator",
+    githubLink: "https://github.com/Tildozer/galaxyGenerator",
+    projectLink: "https://galaxy-generator-opal.vercel.app/",
+  });
+
+  console.log(strangersThings);
+  console.log(reKANstructed);
+  console.log(galaxyGenerator);
+};
+
 export const syncAndSeed = async () => {
   console.log("----reseting tables----");
   await resetTables();
@@ -97,6 +122,9 @@ export const syncAndSeed = async () => {
   console.log("----creating techStack----");
   await createTechstack();
   console.log("----techStack finished----");
+  console.log("----creating projects----");
+  await createProjects();
+  console.log("----projects finished----");
 };
 
 export { getAllTechs, client };

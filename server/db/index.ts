@@ -1,5 +1,6 @@
 import client from "./client.js";
-import { createProject } from "./projects.js";
+import { createDescription } from "./projectDescription.js";
+import { createProject, getAllProjects } from "./projects.js";
 import { createTechItem, getAllTechs } from "./teckStack.js";
 
 const resetTables = async () => {
@@ -91,7 +92,15 @@ const createTechstack = async () => {
   techStack.map((tech) => console.log(tech));
 };
 
-const createProjectDescriptions = async ({ id }) => {};
+const createProjectDescriptions = async (
+  id: number,
+  descriptionArr: string[],
+) => {
+  descriptionArr.map(async (description) => {
+    const desc = await createDescription({ projectId: id, description });
+    console.log(desc);
+  });
+};
 
 const createProjects = async () => {
   const strangersThings = await createProject({
@@ -113,6 +122,20 @@ const createProjects = async () => {
   console.log(strangersThings);
   console.log(reKANstructed);
   console.log(galaxyGenerator);
+
+  createProjectDescriptions(strangersThings.id, [
+    "This was my first introduction to React and JSON web tokens.",
+    "I learned how to make components, how to trade in credentials for a token, and how to validate the token for actions on the site.",
+    "Successfully incorporated react-router-DOM to navigate visitors between pages on a single-page application",
+  ]);
+  createProjectDescriptions(reKANstructed.id, [
+    "This project was my final project for Fullstack Academy, my two partners and I were tasked with making an Ecommerce website, and we went with a buyback Lego site.",
+    "In the development process, we decided to use Jest to test our back-end routes, helping assure that our functions were properly working before we got to the front end.",
+    "We used Exalidraw to plan out our front end before coding that way we were all on the same page about what to do. This helped make development smooth thus letting us do some extra stuff at the end such as email confirmation with NodeMailer",
+  ]);
+  // createProjectDescriptions(galaxyGenerator.id, [
+  //   ""
+  // ]);
 };
 
 export const syncAndSeed = async () => {
@@ -127,4 +150,4 @@ export const syncAndSeed = async () => {
   console.log("----projects finished----");
 };
 
-export { getAllTechs, client };
+export { getAllTechs, getAllProjects, client };

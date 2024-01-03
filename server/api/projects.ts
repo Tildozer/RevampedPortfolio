@@ -1,12 +1,13 @@
 import express, { NextFunction, Request, Response } from "express";
-import { getAllTechs } from "../db/index.js";
+import { getAllProjects } from "../db/index.js";
 
 const router = express.Router();
 
 router.get("/", async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const techStack = await getAllTechs();
-    res.send(techStack);
+    const projects = await getAllProjects();
+
+    res.send(projects);
   } catch (error) {
     next(error);
   }

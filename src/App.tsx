@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Main, Projects, Contact } from "./components";
 import { DarkModeProvider } from "./DarkModeProvider";
 import "vite/modulepreload-polyfill";
+import ErrorBoundary from "./components/routes/ErrorBoundary.jsx";
 
 const root = ReactDOM.createRoot(document.getElementById("root") as Element);
 
@@ -12,6 +13,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
+    errorElement: <ErrorBoundary path="/" />,
   },
   {
     path: "/projects",
@@ -21,6 +23,7 @@ const router = createBrowserRouter([
     path: "/contact",
     element: <Contact />,
   },
+  // { errorElement: }
 ]);
 
 root.render(

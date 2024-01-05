@@ -1,11 +1,12 @@
 import React, { ReactNode, useEffect, useState } from "react";
 import { fetchAllProjects } from "../api/index.js";
+import { Link } from "react-router-dom";
 
 type Props = {};
 
 interface Projects {
   id: number;
-  mainLink: string;
+  projectLink: string;
   githubLink: string;
   projectName: string;
   // image?: File;
@@ -14,10 +15,20 @@ interface Projects {
 
 const makeProjectContainers = (projects: Projects[]): ReactNode => {
   return projects.map(
-    ({ id, mainLink, githubLink, descriptions, projectName }): ReactNode => {
+    ({ id, projectLink, githubLink, descriptions, projectName }): ReactNode => {
       return (
-        <div key={id} className="">
-          {projectName}
+        <div key={id} className="p-10">
+          <span>
+            {projectName}
+            <span> </span>
+            <Link to={githubLink} target="_blank">
+              Repository
+            </Link>
+            <span> | </span>
+            <Link to={projectLink} target="_blank">
+              Website
+            </Link>
+          </span>
         </div>
       );
     },
@@ -36,7 +47,7 @@ const ProjectLinks = (props: Props) => {
   }, []);
 
   return (
-    <div className="h-[200rem]">
+    <div className="flex flex-col justify-center items-center">
       {projects.length ? makeProjectContainers(projects) : null}
     </div>
   );

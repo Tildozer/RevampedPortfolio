@@ -31,13 +31,12 @@ const giveIconBackground = (name: string): string => {
 const TechStack = (props: Props) => {
   const { techStackContainer } = useDarkMode();
   const [techs, setTechs] = useState<TechnicalSkills[] | []>([]);
-  const fetchData = async () => {
-    const data: TechnicalSkills[] = await fetchAllTechs();
-    setTechs(data);
+  const getTechStack = async () => {
+    setTechs(await fetchAllTechs());
   };
 
   useEffect(() => {
-    fetchData();
+    getTechStack();
   }, []);
 
   const makeTechStack = (techs: TechnicalSkills[]) => {

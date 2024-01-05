@@ -5,6 +5,17 @@ export const fetchAllTechs = async () => {
     },
   });
 
-  const result = await response.json();
-  return result;
+  const results = await response.json();
+  return results;
+};
+
+export const fetchAllProjects = async () => {
+  const response = await fetch("/api/projects", {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  const results = await response.json();
+  return results;
 };

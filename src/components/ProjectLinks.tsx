@@ -1,4 +1,5 @@
-import React from "react";
+import React, { ReactNode, useEffect, useState } from "react";
+import { fetchAllProjects } from "../api/index.js";
 
 type Props = {};
 
@@ -6,16 +7,39 @@ interface Projects {
   id: number;
   mainLink: string;
   githubLink: string;
+  projectName: string;
   // image?: File;
-  descriptionPoints: string[];
+  descriptions: string[];
 }
 
-// const makeProjectContainers = (projects: Projects[]) => {
-//   projects.map(({ id, mainLink, githubLink, descriptionPoints }) => {});
-// };
+const makeProjectContainers = (projects: Projects[]): ReactNode => {
+  return projects.map(
+    ({ id, mainLink, githubLink, descriptions, projectName }): ReactNode => {
+      return (
+        <div key={id} className="">
+          {projectName}
+        </div>
+      );
+    },
+  );
+};
 
 const ProjectLinks = (props: Props) => {
-  return <div className="h-[200rem]">ProjectLinks</div>;
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    const getProjects = async () => {
+      setProjects(await fetchAllProjects());
+    };
+
+    getProjects();
+  }, []);
+
+  return (
+    <div className="h-[200rem]">
+      {projects.length ? makeProjectContainers(projects) : null}
+    </div>
+  );
 };
 
 export default ProjectLinks;

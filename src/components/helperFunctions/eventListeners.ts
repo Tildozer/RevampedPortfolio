@@ -18,7 +18,7 @@ export const setFooterEventListeners = (
     gsap.to(footerContainer.current, {
       bottom: "0",
       display: "flex",
-      duration: 0.75,
+      duration: 1.0,
     });
   };
 
@@ -43,7 +43,7 @@ export const setFooterEventListeners = (
       gsap.to(footerContainer.current, {
         bottom: "-5rem",
         display: "hidden",
-        duration: 0.5,
+        duration: 1.0,
       });
       handleScrollStop();
     }

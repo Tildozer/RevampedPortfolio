@@ -1,4 +1,5 @@
 export { Header } from "./header";
+export { default as ErrorBoundary } from "./ErrorBoundary";
 export { default as Footer } from "./Footer";
 export { default as ProjectLinks } from "./ProjectLinks";
 export { Experince, TechStack } from "./mainPage";

@@ -15,7 +15,7 @@ const Main = ({}: Props) => {
     >
       <Header />
       <TechStack />
-      <div className="h-[85vh] w-screen">
+      <div className="h-[85vh] w-screen mb-20">
         <Canvas className="bg-slate-400 dark:bg-black">
           <Experince />
         </Canvas>

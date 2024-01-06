@@ -129,13 +129,15 @@ const createProjects = async () => {
     "Successfully incorporated react-router-DOM to navigate visitors between pages on a single-page application",
   ]);
   createProjectDescriptions(reKANstructed.id, [
-    "This project was my final project for Fullstack Academy, my two partners and I were tasked with making an Ecommerce website, and we went with a buyback Lego site.",
+    "This project was my final project for Fullstack Academy, my two partners and I were tasked with making an Ecommerce website. We went with a buyback Lego site.",
     "In the development process, we decided to use Jest to test our back-end routes, helping assure that our functions were properly working before we got to the front end.",
     "We used Exalidraw to plan out our front end before coding that way we were all on the same page about what to do. This helped make development smooth thus letting us do some extra stuff at the end such as email confirmation with NodeMailer",
   ]);
-  // createProjectDescriptions(galaxyGenerator.id, [
-  //   ""
-  // ]);
+  createProjectDescriptions(galaxyGenerator.id, [
+    "This was one of my first 3D rendered projects, implementing Three.js.",
+    "It helped me learn how to use math to make a design and how small a change can make a big difference.",
+    "I used a GUI for debugging and figuring out the how I wanted my galaxy to look.",
+  ]);
 };
 
 export const syncAndSeed = async () => {

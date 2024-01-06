@@ -5,6 +5,7 @@ interface ProjectWithDescription {
   githubLink: string;
   projectLink: string;
   projectName: string;
+  descriptionId: number;
   description: string;
   projectId: number;
 }
@@ -45,7 +46,10 @@ const attachDescriptionToProject = (projects: ProjectWithDescription[]) => {
       };
     }
     if (project.projectId) {
-      const description = project.description;
+      const description = {
+        id: project.descriptionId,
+        description: project.description,
+      };
       projectsById[project.id].descriptions.push(description);
     }
   });
@@ -55,7 +59,7 @@ const attachDescriptionToProject = (projects: ProjectWithDescription[]) => {
 
 export const getAllProjects = async () => {
   const SQL = `
-    SELECT projects.id, projects."githubLink", projects."projectLink", projects."projectName", projects_descriptions.description, projects_descriptions."projectId"
+    SELECT projects.id, projects."githubLink", projects."projectLink", projects."projectName", projects_descriptions.description, projects_descriptions."projectId", projects_descriptions.id as "descriptionId"
     FROM projects
     LEFT JOIN projects_descriptions ON "projectId" = projects.id;
     `;

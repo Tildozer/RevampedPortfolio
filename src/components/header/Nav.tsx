@@ -46,7 +46,7 @@ const Nav = (props: Props) => {
                 pathname === path
                   ? "font-bold text-orange-500 dark:text-cyan-500"
                   : ""
-              } hover:text-blue-500 hover:dark:text-yellow-500`}
+              } hover:text-blue-500 hover:dark:text-blue-500`}
               to={path}
             >
               {name}

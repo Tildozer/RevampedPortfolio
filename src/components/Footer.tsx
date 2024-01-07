@@ -16,7 +16,7 @@ const Footer = (props: Props) => {
   return (
     <div
       ref={footerContainer}
-      className="fixed bottom-0 pb-4 pt-4 w-screen bg-slate-200 dark:bg-slate-900 flex justify-center items-center gap-1 sm:gap-4"
+      className="fixed bottom-0 pb-4 pt-4 w-full bg-slate-200 dark:bg-slate-900 flex justify-center items-center gap-1 sm:gap-4"
     >
       <Link
         to={"https://github.com/Tildozer"}

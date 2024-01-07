@@ -8,7 +8,7 @@ const Header = (props: Props) => {
   const { toggleDarkMode, darkMode, slider } = useDarkMode();
   return (
     <>
-      <div className="flex flex-col w-52 sm:w-screen sm:flex-row sm:justify-between font-Playfair dark:text-yellow-500">
+      <div className="flex flex-col w-52 sm:w-full sm:flex-row sm:justify-between font-Playfair dark:text-yellow-500">
         <ThemeSwitch
           darkMode={darkMode}
           toggleDarkMode={toggleDarkMode}

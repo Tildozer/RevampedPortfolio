@@ -2,7 +2,7 @@ import React from "react";
 import * as ReactDOM from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Main, Projects, Contact, ErrorBoundary } from "./components";
+import { Main, Projects, ContactInfo, ErrorBoundary } from "./components";
 import { DarkModeProvider } from "./DarkModeProvider";
 import "vite/modulepreload-polyfill";
 
@@ -20,7 +20,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/contact",
-    element: <Contact />,
+    element: <ContactInfo />,
   },
 ]);
 

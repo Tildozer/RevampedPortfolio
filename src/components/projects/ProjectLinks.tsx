@@ -1,5 +1,5 @@
+import { fetchAllProjects } from "../../api";
 import React, { ReactNode, useEffect, useState } from "react";
-import { fetchAllProjects } from "../api/index.js";
 import { Link } from "react-router-dom";
 
 type Props = {};
@@ -23,7 +23,7 @@ const makeProjectContainers = (projects: Projects[]): ReactNode => {
       return (
         <div
           key={id}
-          className="mb-6 border-2 border-slate-400 rounded-md bg-black dark:bg-slate-500 text-yellow-500 dark:text-black transition shadow-lg shadow-black dark:shadow-slate-500"
+          className="mb-6 border-2 border-slate-400 rounded-md bg-black dark:bg-slate-500 text-yellow-500 dark:text-black transition shadow-lg shadow-black dark:shadow-slate-500 animate-fadeInOnce"
         >
           <div className="flex flex-col xs:flex-row justify-between border-b-2 p-4 border-slate-400">
             <h1 className="text-xl text-orange-200 dark:text-yellow-500">
@@ -77,8 +77,12 @@ const ProjectLinks = (props: Props) => {
   }, []);
 
   return (
-    <div className="flex flex-col justify-center items-center pb-20">
-      {projects.length ? makeProjectContainers(projects) : null}
+    <div className="flex flex-col justify-center items-center pb-20 w-full">
+      {projects.length ? (
+        makeProjectContainers(projects)
+      ) : (
+        <div className="w-full h-[110vh]"></div>
+      )}
     </div>
   );
 };

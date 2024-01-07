@@ -1,6 +1,7 @@
 import React from "react";
 import { useDarkMode } from "../../DarkModeProvider";
-import { Header, ProjectLinks, Footer } from "..";
+import { Header, Footer } from "..";
+import { ProjectLinks } from "./";
 
 interface Props {}
 
@@ -9,7 +10,7 @@ const Projects = (props: Props) => {
   return (
     <div
       ref={background}
-      className="bg-color min-h-screen w-screen bg-slate-200 dark:bg-slate-900 dark:text-slate-400"
+      className="bg-color min-h-screen w-full bg-slate-200 dark:bg-slate-900 dark:text-slate-400"
     >
       <Header />
       <ProjectLinks />

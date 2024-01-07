@@ -12,7 +12,7 @@ const Underline = ({ link, width }: Props) => {
   const underline: MutableRefObject<HTMLDivElement> = useRef(null!);
 
   useEffect(() => {
-    setTimeout(() => setHeaderEventListeners(container, underline, width), 500);
+    setHeaderEventListeners(container, underline, width);
   }, []);
 
   return (

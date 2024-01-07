@@ -38,9 +38,14 @@ export default {
           '0%, 100%': { transform: 'rotate(-3deg)' },
           '50%': { transform: 'rotate(3deg)' },
         },
+        fadeIn: {
+          "90%": { opacity: 1 },
+          "0%": { opacity: 0 },
+        },
       },
       animation: {
-        wiggle: 'wiggle 0.5s ease-in-out 3'
+        wiggle: 'wiggle 0.5s ease-in-out 3',
+        fadeInOnce: "fadeIn 1s 1",
       }
     },
   },

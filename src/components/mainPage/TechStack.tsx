@@ -68,7 +68,7 @@ const TechStack = (props: Props) => {
       <h3>Languges & libraries:</h3>
       <div
         ref={techStackContainer}
-        className="content-start min-h-[9.25rem] max-h-96 overflow-scroll grid grid-flow-col grid-rows-3 gap-2 text-6xl p-4 border-solid border-l-0 border-r-0 bg-orange-200 dark:bg-blue-900 text-yellow-500 dark:text-black border-slate-950 border-2 self-center sm:justify-start sm:grid-rows-1 lg:justify-center lg:overflow-auto"
+        className="content-start min-h-[9.25rem] max-h-96 overflow-x-scroll w-full grid grid-flow-col grid-rows-3 gap-2 text-6xl p-4 border-solid border-l-0 border-r-0 bg-orange-200 dark:bg-blue-900 text-yellow-500 dark:text-black border-slate-950 border-2 self-center sm:justify-start sm:grid-rows-1 lg:justify-center lg:overflow-hidden"
       >
         {techs.length ? makeTechStack(techs) : null}
       </div>

@@ -11,7 +11,7 @@ const Main = ({}: Props) => {
   return (
     <div
       ref={background}
-      className="bg-color min-h-screen w-full bg-slate-200 dark:bg-slate-900 dark:text-yellow-500"
+      className="bg-color min-h-screen w-full overflow-x-hidden bg-slate-200 dark:bg-slate-900 dark:text-yellow-500"
     >
       <Header />
       <div className="flex flex-col animate-fadeInOnce">

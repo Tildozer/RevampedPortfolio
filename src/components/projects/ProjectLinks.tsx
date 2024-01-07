@@ -77,7 +77,7 @@ const ProjectLinks = (props: Props) => {
   }, []);
 
   return (
-    <div className="flex flex-col justify-center items-center pb-20 w-full">
+    <div className="flex flex-col justify-center items-center pl-3 pr-3 pb-20 w-full">
       {projects.length ? (
         makeProjectContainers(projects)
       ) : (

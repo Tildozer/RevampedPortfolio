@@ -9,7 +9,7 @@ type Props = {
 
 const ThemeSwitch = ({ darkMode, toggleDarkMode, slider }: Props) => {
   return (
-    <div className="flex flex-row text-[.45rem] mr-4 dark:text-yellow-500 text-slate-900">
+    <div className="flex flex-row text-[.45rem] 2xs:mr-4 dark:text-yellow-500 text-slate-900">
       <label
         onClick={toggleDarkMode}
         className="w-12 h-2 rounded-md m-2 mt-3 bg-slate-800 dark:bg-slate-400"

@@ -109,7 +109,7 @@ const createProjects = async () => {
     projectLink: "https://strangersproj.netlify.app",
   });
   const reKANstructed = await createProject({
-    projectName: "ReKANstructed",
+    projectName: "Re-KANstructed",
     githubLink: "https://github.com/Team-Kan/Lego-shopper",
     projectLink: "https://rekanstructed.onrender.com/",
   });

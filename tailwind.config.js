@@ -20,7 +20,8 @@ export default {
         "Playfair": ['Playfair Display', 'serif'],
       },
       screens: {
-        "xs": '530px'
+        "xs": '530px',
+        "2xs": "220px"
       },
       colors: {
         "#32CD32": '#32CD32',

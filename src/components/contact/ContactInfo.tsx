@@ -9,7 +9,7 @@ const ContactInfo = (props: Props) => {
   return (
     <div
       ref={background}
-      className="bg-color min-h-screen w-full pr-[15px] bg-slate-200 dark:bg-slate-900 dark:text-slate-400"
+      className="bg-color min-h-screen w-full bg-slate-200 dark:bg-slate-900 dark:text-slate-400"
     >
       <Header />
       <div className="min-h-[71.2vh] sm:min-h-[85.02vh]"></div>

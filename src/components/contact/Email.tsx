@@ -1,4 +1,4 @@
-import { sendEmail } from "../../api/";
+// import { sendEmail } from "../../api/";
 import React, { useState } from "react";
 
 type Props = {};
@@ -7,10 +7,10 @@ const Email = (props: Props) => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
 
-  const submitForm = async (ev: React.FormEvent<HTMLButtonElement>) => {
-    ev.preventDefault();
-    sendEmail(email, name);
-  };
+//   const submitForm = async (ev: React.FormEvent<HTMLButtonElement>) => {
+//     ev.preventDefault();
+//     sendEmail(email, name);
+//   };
 
   return (
     <form className="flex flex-col items-center bg-coolGray pb-5 pt-5 mb-5 rounded-md border-2 shadow-lg shadow-onyx border-onyx w-10/12">

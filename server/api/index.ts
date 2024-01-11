@@ -13,6 +13,6 @@ router.use("/tech", techStack);
 
 router.use("/projects", projects);
 
-router.use("/email", email);
+// router.use("/email", email);
 
 export default router;

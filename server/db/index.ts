@@ -2,6 +2,7 @@ import client from "./client.js";
 import { createDescription } from "./projectDescription.js";
 import { createProject, getAllProjects } from "./projects.js";
 import { createTechItem, getAllTechs } from "./teckStack.js";
+import sendMail from "./email.js";
 
 const resetTables = async () => {
   const resetSQL = `
@@ -152,4 +153,4 @@ export const syncAndSeed = async () => {
   console.log("----projects finished----");
 };
 
-export { getAllTechs, getAllProjects, client };
+export { getAllTechs, getAllProjects, client, sendMail };

@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "start": "node --loader ts-node/esm ./server/index.ts",
     "dev:server": "nodemon --watch",
     "build": "vite build",
     "pretty": "npx prettier --write .",

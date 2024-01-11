@@ -38,9 +38,9 @@ const Email = (props: Props) => {
         placeholder="Enter your name..."
         type="text"
       />
-      <button type="submit" onClick={(ev) => submitForm(ev)}>
+      {/* <button type="submit" onClick={(ev) => submitForm(ev)}>
         Send Email
-      </button>
+      </button> */}
     </form>
   );
 };

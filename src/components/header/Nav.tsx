@@ -58,7 +58,7 @@ const Nav = (props: Props) => {
   };
 
   return (
-    <nav className="flex justify-around flex-col sm:flex-row order-2 sm:-order-none sm:gap-4 select-none mb-4">
+    <nav className="order-2 mb-4 flex select-none flex-col justify-around sm:-order-none sm:flex-row sm:gap-4">
       {MakeLinks(links)}
     </nav>
   );

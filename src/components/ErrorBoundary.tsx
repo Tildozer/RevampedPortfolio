@@ -24,7 +24,7 @@ const ErrorBoundary = (props: Props) => {
   }, []);
 
   return (
-    <div className="bg-slate-200 dark:bg-slate-900 h-screen w-screen"></div>
+    <div className="h-screen w-screen bg-slate-200 dark:bg-slate-900"></div>
   );
 };
 

@@ -23,9 +23,9 @@ const makeProjectContainers = (projects: Projects[]): ReactNode => {
       return (
         <div
           key={id}
-          className="mb-6 border-2 border-slate-400 rounded-md bg-black dark:bg-slate-500 text-yellow-500 dark:text-black transition shadow-lg shadow-black dark:shadow-slate-500 animate-fadeInOnce"
+          className="mb-6 animate-fadeInOnce rounded-md border-2 border-slate-400 bg-black text-yellow-500 shadow-lg shadow-black transition dark:bg-slate-500 dark:text-black dark:shadow-slate-500"
         >
-          <div className="flex flex-col xs:flex-row justify-between border-b-2 p-4 border-slate-400">
+          <div className="flex flex-col justify-between border-b-2 border-slate-400 p-4 xs:flex-row">
             <h1 className="text-xl text-orange-200 dark:text-yellow-500">
               {projectName}
             </h1>
@@ -33,7 +33,7 @@ const makeProjectContainers = (projects: Projects[]): ReactNode => {
               <Link
                 to={githubLink}
                 target="_blank"
-                className="hover:text-blue-500 dark:hover:text-yellow-500 underline underline-offset-4 text-orange-500 dark:text-cyan-500"
+                className="text-orange-500 underline underline-offset-4 hover:text-blue-500 dark:text-cyan-500 dark:hover:text-yellow-500"
               >
                 Repository
               </Link>
@@ -41,7 +41,7 @@ const makeProjectContainers = (projects: Projects[]): ReactNode => {
               <Link
                 to={projectLink}
                 target="_blank"
-                className="hover:text-blue-500 dark:hover:text-yellow-500 underline underline-offset-4 text-orange-500 dark:text-cyan-500"
+                className="text-orange-500 underline underline-offset-4 hover:text-blue-500 dark:text-cyan-500 dark:hover:text-yellow-500"
               >
                 Website
               </Link>
@@ -52,7 +52,7 @@ const makeProjectContainers = (projects: Projects[]): ReactNode => {
               return (
                 <li
                   key={id}
-                  className="max-w-2xl pb-4 pt-2 list-disc  ml-4 mr-4"
+                  className="ml-4 mr-4 max-w-2xl list-disc  pb-4 pt-2"
                 >
                   {description}
                 </li>
@@ -77,11 +77,11 @@ const ProjectLinks = (props: Props) => {
   }, []);
 
   return (
-    <div className="flex flex-col justify-center items-center pl-3 pr-3 pb-20 w-full">
+    <div className="flex w-full flex-col items-center justify-center pb-20 pl-3 pr-3">
       {projects.length ? (
         makeProjectContainers(projects)
       ) : (
-        <div className="w-full h-[110vh]"></div>
+        <div className="h-[110vh] w-full"></div>
       )}
     </div>
   );

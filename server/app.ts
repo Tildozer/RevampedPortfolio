@@ -28,4 +28,9 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 
 app.use("/api", api);
 
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+  console.log(err);
+  res.status(err.status || 500).send({ error: err.message });
+});
+
 export default app;

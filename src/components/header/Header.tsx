@@ -8,14 +8,14 @@ const Header = (props: Props) => {
   const { toggleDarkMode, darkMode, slider } = useDarkMode();
   return (
     <>
-      <div className="flex flex-col w-52 sm:w-full sm:flex-row sm:justify-between font-Playfair dark:text-yellow-500">
+      <div className="flex w-52 flex-col font-Playfair dark:text-yellow-500 sm:w-full sm:flex-row sm:justify-between">
         <ThemeSwitch
           darkMode={darkMode}
           toggleDarkMode={toggleDarkMode}
           slider={slider}
         />
         <Nav />
-        <div className="font-Bebas pt-2 xs:self-end sm:mr-2 order-[0] sm:order-2 text-3xl select-none flex flex-col 2xs:flex-row">
+        <div className="order-[0] flex select-none flex-col pt-2 font-Bebas text-3xl 2xs:flex-row xs:self-end sm:order-2 sm:mr-2">
           <span className="pr-2">Anthony</span>
           <span>Thibodeaux</span>
         </div>

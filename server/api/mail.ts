@@ -9,18 +9,19 @@ interface MailObj {
   htmlStr: string;
 }
 
-declare global {
-  namespace Express {
-    interface Request {
-      mailObj: MailObj;
-    }
-  }
-}
-
 router.post("/", async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const content: MailObj = req.params;
-    await sendMail("Anthonys resume", content);
+    const content: MailObj = req.body;
+    const regex: RegExp = new RegExp(
+      "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$",
+    );
+    if (!regex.test(content.email)) {
+      next({ message: "Plese enter a valid email", status: 400 });
+    } else {
+      const results = await sendMail("Anthonys resume", content);
+      console.log(results);
+    }
+    // res.send(results);
   } catch (error) {
     next(error);
   }

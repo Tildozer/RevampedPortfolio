@@ -14,9 +14,9 @@ const Main = ({}: Props) => {
       className="bg-color min-h-screen w-full overflow-x-hidden bg-slate-200 dark:bg-slate-900 dark:text-yellow-500"
     >
       <Header />
-      <div className="flex flex-col animate-fadeInOnce">
+      <div className="flex animate-fadeInOnce flex-col">
         <TechStack />
-        <div className="h-[85vh] mb-20">
+        <div className="mb-20 h-[85vh]">
           <Canvas className="bg-slate-400 dark:bg-black">
             <Experince />
           </Canvas>

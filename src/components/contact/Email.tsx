@@ -1,4 +1,4 @@
-// import { sendEmail } from "../../api/";
+import { sendEmail } from "../../api/";
 import React, { useState } from "react";
 
 type Props = {};
@@ -7,20 +7,20 @@ const Email = (props: Props) => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
 
-//   const submitForm = async (ev: React.FormEvent<HTMLButtonElement>) => {
-//     ev.preventDefault();
-//     sendEmail(email, name);
-//   };
+  const submitForm = async (ev: React.FormEvent<HTMLButtonElement>) => {
+    ev.preventDefault();
+    sendEmail(email, name);
+  };
 
   return (
-    <form className="flex flex-col items-center bg-coolGray pb-5 pt-5 mb-5 rounded-md border-2 shadow-lg shadow-onyx border-onyx w-10/12">
+    <form className="mb-5 flex w-10/12 flex-col items-center pb-5 pt-5">
       <div className="m-2">
         To get an email with more info about where to reach me, fill out this
         form.
       </div>
       <label htmlFor="Email">Email</label>
       <input
-        className="m-3 w-8/12 max-w-[34rem] pl-2 text-black rounded-md border-2 border-mountainBatten"
+        className="m-3 w-8/12 max-w-[34rem] rounded-md border-2 pl-2 text-black"
         onChange={(ev: React.ChangeEvent<HTMLInputElement>) =>
           setEmail(ev.target.value)
         }
@@ -30,7 +30,7 @@ const Email = (props: Props) => {
       />
       <label htmlFor="Name">Name</label>
       <input
-        className="m-3 w-8/12 max-w-[34rem] pl-2 text-black rounded-md border-2 border-mountainBatten"
+        className="m-3 w-8/12 max-w-[34rem] rounded-md border-2 pl-2 text-black"
         onChange={(ev: React.ChangeEvent<HTMLInputElement>) =>
           setName(ev.target.value)
         }
@@ -38,9 +38,13 @@ const Email = (props: Props) => {
         placeholder="Enter your name..."
         type="text"
       />
-      {/* <button type="submit" onClick={(ev) => submitForm(ev)}>
+      <button
+        className=" rounded-md border-2 border-black bg-orange-500 p-2 text-black shadow-md shadow-black transition active:translate-y-1 active:shadow-none dark:border-white dark:bg-cyan-400 dark:shadow-slate-400"
+        type="submit"
+        onClick={(ev) => submitForm(ev)}
+      >
         Send Email
-      </button> */}
+      </button>
     </form>
   );
 };

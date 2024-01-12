@@ -13,7 +13,7 @@ const ContactInfo = (props: Props) => {
       className="bg-color min-h-screen w-full bg-slate-200 dark:bg-slate-900 dark:text-slate-400"
     >
       <Header />
-      <div className="mt-4 flex flex-col items-center justify-center">
+      <div className="mt-4 flex animate-fadeInOnce flex-col items-center justify-center">
         <Email />
       </div>
       <Footer />

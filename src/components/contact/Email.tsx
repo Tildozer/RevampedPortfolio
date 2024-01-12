@@ -1,5 +1,9 @@
+import { ToastContainer, toast } from "react-toastify";
 import { sendEmail } from "../../api/";
 import React, { useState } from "react";
+import { GiAchillesHeel } from "react-icons/gi";
+import { MdOutlineSend } from "react-icons/md";
+import "react-toastify/dist/ReactToastify.min.css";
 
 type Props = {};
 
@@ -9,11 +13,39 @@ const Email = (props: Props) => {
 
   const submitForm = async (ev: React.FormEvent<HTMLButtonElement>) => {
     ev.preventDefault();
-    sendEmail(email, name);
+    const isEmailSent = await sendEmail(email, name);
+    if (isEmailSent.error) {
+      toast.error(isEmailSent.error, {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        icon: GiAchillesHeel,
+      });
+      return;
+    }
+    setName("");
+    setEmail("");
+    toast.success(isEmailSent.message, {
+      position: toast.POSITION.TOP_RIGHT,
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      icon: MdOutlineSend,
+    });
   };
 
   return (
-    <form className="mb-5 flex w-10/12 flex-col items-center pb-5 pt-5">
+    <form className="mb-5 flex w-10/12 flex-col items-center pb-5 pt-5 text-yellow-500">
+      <ToastContainer />
       <div className="m-2">
         To get an email with more info about where to reach me, fill out this
         form.

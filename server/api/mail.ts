@@ -19,9 +19,9 @@ router.post("/", async (req: Request, res: Response, next: NextFunction) => {
       next({ message: "Plese enter a valid email", status: 400 });
     } else {
       const results = await sendMail("Anthonys resume", content);
-      console.log(results);
+
+      res.send(JSON.stringify({ message: "Email sent" }));
     }
-    // res.send(results);
   } catch (error) {
     next(error);
   }

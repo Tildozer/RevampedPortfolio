@@ -37,18 +37,26 @@ export const setFooterEventListeners = (
   let ticking: boolean = false;
 
   const findScrollDirection = (scrollPosition: ScrollPosition) => {
-    if (scrollPosition.current >= scrollPosition.previous) {
-      showFooter();
-    } else {
-      gsap.to(footerContainer.current, {
-        bottom: "-5rem",
-        display: "hidden",
-        duration: 2.0,
-      });
-      handleScrollStop();
+    if (
+      !(
+        window.innerHeight + Math.round(window.scrollY) >=
+        document.body.offsetHeight
+      )
+    ) {
+      // you're not at the bottom of the page && not above the top
+      if (scrollPosition.current >= scrollPosition.previous) {
+        showFooter();
+      } else if (window.scrollY > 0) {
+        gsap.to(footerContainer.current, {
+          bottom: "-5rem",
+          display: "hidden",
+          duration: 2.0,
+        });
+        handleScrollStop();
+      }
+      scrollPosition.previous = scrollPosition.current;
+      scrollPosition.current = window.scrollY;
     }
-    scrollPosition.previous = scrollPosition.current;
-    scrollPosition.current = window.scrollY;
   };
 
   const handleScroll = () => {

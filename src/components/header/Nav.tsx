@@ -43,9 +43,7 @@ const Nav = (props: Props) => {
           link={
             <Link
               className={`${
-                pathname === path
-                  ? "font-bold text-orange-500 dark:text-cyan-500"
-                  : ""
+                pathname === path ? "text-orange-500 dark:text-cyan-500" : ""
               } hover:text-blue-500 hover:dark:text-blue-500`}
               to={path}
             >

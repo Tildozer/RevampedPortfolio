@@ -10,6 +10,7 @@ const Message = ({ message, setMessage }: Props) => {
     <>
       <label htmlFor="Message">Message me for inquiries</label>
       <textarea
+        id="Message"
         className="m-3 min-h-[10rem] w-8/12 max-w-[34rem] rounded-md border-2 pl-2 text-black"
         onChange={(ev: React.ChangeEvent<HTMLTextAreaElement>) =>
           setMessage(ev.target.value)

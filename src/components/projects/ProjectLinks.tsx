@@ -13,7 +13,6 @@ interface Projects {
   projectLink: string;
   githubLink: string;
   projectName: string;
-  // image?: File;
   descriptions: Description[];
 }
 

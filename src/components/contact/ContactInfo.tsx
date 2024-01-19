@@ -10,7 +10,7 @@ const ContactInfo = (props: Props) => {
   return (
     <div
       ref={background}
-      className="bg-color min-h-screen w-full bg-slate-200 dark:bg-slate-900 dark:text-slate-400"
+      className="bg-color min-h-screen w-full bg-slate-200 text-black dark:bg-slate-900 dark:text-yellow-500"
     >
       <Header />
       <div className="mt-4 flex animate-fadeInOnce flex-col items-center justify-center">

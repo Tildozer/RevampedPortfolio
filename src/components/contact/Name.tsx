@@ -10,6 +10,8 @@ const Name = ({ name, setName }: Props) => {
     <>
       <label htmlFor="Name">Name</label>
       <input
+        id="Name"
+        autoComplete="name"
         className="m-3 w-8/12 max-w-[34rem] rounded-md border-2 pl-2 text-black"
         onChange={(ev: React.ChangeEvent<HTMLInputElement>) =>
           setName(ev.target.value)

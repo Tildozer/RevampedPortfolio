@@ -1,6 +1,7 @@
 import nodemailer from "nodemailer";
 
 interface MailObj {
+  subject: string;
   name: string;
   htmlStr: string;
 }
@@ -32,7 +33,7 @@ const sendMailHandler = async (client: string, content: MailObj) => {
     const emailInfo = {
       from: process.env.EMAIL,
       to: `${process.env.PERSONAL_EMAIL}`,
-      subject: "Anthony's Info",
+      subject: content.subject,
       html: getHTMLMessage(client, content),
     };
 

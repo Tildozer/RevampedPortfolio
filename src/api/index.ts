@@ -24,6 +24,7 @@ export const sendEmail = async (
   message: string,
   name: string,
   contactInfo: string,
+  subject: string,
 ) => {
   const response = await fetch("/api/email", {
     method: "post",
@@ -32,6 +33,7 @@ export const sendEmail = async (
     },
     body: JSON.stringify({
       name,
+      subject,
       htmlStr: `
         <div>
           to get back in contact with ${name} 
